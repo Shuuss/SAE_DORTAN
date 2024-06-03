@@ -11,9 +11,9 @@ namespace DortanApp
             "Server=srv-peda-new;" +
             "Port=5433;" +
             "Database=cetinkam;" +
-            "Search Path=dortan;" +
-            "User Id=abdoulvt;" +
-            "Password=q2hG71;";
+            "Search Path=wpflients;" +
+            "User Id=cetinkam;" +
+            "Password=7jhqDh;";
 
         private DataAccess()
         {

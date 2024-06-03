@@ -1,16 +1,18 @@
-﻿namespace DortanApp
+﻿using System;
+
+namespace DortanApp
 {
-    public class Activity
+    public class Caracteristique
     {
         private int id;
         private string nom;
 
-        public Activity(string nom)
+        public Caracteristique(string nom)
         {
             this.Nom = nom;
         }
 
-        public Activity(int id, string nom) : this(nom)
+        public Caracteristique(int id, string nom) : this(nom)
         {
             this.Id = id;
         }
@@ -43,7 +45,7 @@
             {
                 if (string.IsNullOrWhiteSpace(value))
                 {
-                    throw new ArgumentException("Le nom ne peut pas être vide ou null.", nameof(value));
+                    throw new ArgumentException("Le nom ne peut pas être vide ou nul.", nameof(value));
                 }
                 nom = value;
             }

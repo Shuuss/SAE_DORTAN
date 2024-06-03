@@ -7,3 +7,12 @@ C:\Users\melih\Desktop\Travaux à faire\SAE 2.01 - REALISATION\Dortan_IHM\Dortan
 C:\Users\melih\Desktop\Travaux à faire\SAE 2.01 - REALISATION\Dortan_IHM\DortanApp\obj\Debug\net6.0-windows\App.g.cs
 C:\Users\melih\Desktop\Travaux à faire\SAE 2.01 - REALISATION\Dortan_IHM\DortanApp\obj\Debug\net6.0-windows\DortanApp_MarkupCompile.cache
 C:\Users\melih\Desktop\Travaux à faire\SAE 2.01 - REALISATION\Dortan_IHM\DortanApp\obj\Debug\net6.0-windows\DortanApp_MarkupCompile.lref
+P:\SAE 2.01 Conception et développement\SAE 2.01 - REALISATION\Dortan_IHM\DortanApp\obj\Debug\net6.0-windows\DortanApp.csproj.AssemblyReference.cache
+P:\SAE 2.01 Conception et développement\SAE 2.01 - REALISATION\Dortan_IHM\DortanApp\obj\Debug\net6.0-windows\ActivityCreationWindow.g.cs
+P:\SAE 2.01 Conception et développement\SAE 2.01 - REALISATION\Dortan_IHM\DortanApp\obj\Debug\net6.0-windows\EquipmentListWindow.g.cs
+P:\SAE 2.01 Conception et développement\SAE 2.01 - REALISATION\Dortan_IHM\DortanApp\obj\Debug\net6.0-windows\LoginWindow.g.cs
+P:\SAE 2.01 Conception et développement\SAE 2.01 - REALISATION\Dortan_IHM\DortanApp\obj\Debug\net6.0-windows\MainWindow.g.cs
+P:\SAE 2.01 Conception et développement\SAE 2.01 - REALISATION\Dortan_IHM\DortanApp\obj\Debug\net6.0-windows\ReservationWindow.g.cs
+P:\SAE 2.01 Conception et développement\SAE 2.01 - REALISATION\Dortan_IHM\DortanApp\obj\Debug\net6.0-windows\App.g.cs
+P:\SAE 2.01 Conception et développement\SAE 2.01 - REALISATION\Dortan_IHM\DortanApp\obj\Debug\net6.0-windows\DortanApp_MarkupCompile.cache
+P:\SAE 2.01 Conception et développement\SAE 2.01 - REALISATION\Dortan_IHM\DortanApp\obj\Debug\net6.0-windows\DortanApp_MarkupCompile.lref

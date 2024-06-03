@@ -7,7 +7,7 @@ namespace DortanApp
 {
     public class ApplicationData
     {
-        private ObservableCollection<User> LesUsers { get; set; }
+        private ObservableCollection<Employe> LesUsers { get; set; }
         private ObservableCollection<Material> LesMateriaux { get; set; }
         private ObservableCollection<Activity> LesActivites { get; set; }
         private ObservableCollection<Reservation> LesReservations { get; set; }
@@ -17,7 +17,7 @@ namespace DortanApp
 
         public ApplicationData()
         {
-            LesUsers = new ObservableCollection<User>();
+            LesUsers = new ObservableCollection<Employe>();
             LesMateriaux = new ObservableCollection<Material>();
             LesActivites = new ObservableCollection<Activity>();
             LesReservations = new ObservableCollection<Reservation>();
@@ -66,7 +66,7 @@ namespace DortanApp
                     dataAdapter.Fill(dataTable);
                     foreach (DataRow res in dataTable.Rows)
                     {
-                        User nouveau = new User(int.Parse(res["id"].ToString()), res["identifiant"].ToString());
+                        Employe nouveau = new Employe(int.Parse(res["id"].ToString()), res["identifiant"].ToString());
                         LesUsers.Add(nouveau);
                     }
                     return dataTable.Rows.Count;
@@ -96,19 +96,19 @@ namespace DortanApp
             }
         }
 
-        public int Create(User u)
+        public int Create(Employe u)
         {
             string sql = $"INSERT INTO User (identifiant, mdp) VALUES ('{u.Identifiant}', '{u.Mdp}')";
             return MethodeGenerique(sql);
         }
 
-        public int Update(User u)
+        public int Update(Employe u)
         {
             string sql = $"UPDATE User SET identifiant = '{u.Identifiant}', mdp = '{u.Mdp}' WHERE id = {u.Id}";
             return MethodeGenerique(sql);
         }
 
-        public int Delete(User u)
+        public int Delete(Employe u)
         {
             string sql = $"DELETE FROM User WHERE id = {u.Id}";
             return MethodeGenerique(sql);
