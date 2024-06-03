@@ -9,7 +9,7 @@ namespace DortanApp
 {
     public class Material
     {
-        private int id;
+        private int materialId;
         private string nom;
     }
 }
