@@ -436,23 +436,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\cetinkam\\.nuget\\packages\\": {},
+    "C:\\Users\\abdoulvt\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "P:\\SAE 2.01 Conception et développement\\SAE 2.01 - REALISATION\\Dortan_IHM\\DortanApp\\DortanApp.csproj",
+      "projectUniqueName": "P:\\BUT\\S2\\SAE 2.01 Conception et développement\\SAE_DORTAN\\Dortan_IHM\\DortanApp\\DortanApp.csproj",
       "projectName": "DortanApp",
-      "projectPath": "P:\\SAE 2.01 Conception et développement\\SAE 2.01 - REALISATION\\Dortan_IHM\\DortanApp\\DortanApp.csproj",
-      "packagesPath": "C:\\Users\\cetinkam\\.nuget\\packages\\",
-      "outputPath": "P:\\SAE 2.01 Conception et développement\\SAE 2.01 - REALISATION\\Dortan_IHM\\DortanApp\\obj\\",
+      "projectPath": "P:\\BUT\\S2\\SAE 2.01 Conception et développement\\SAE_DORTAN\\Dortan_IHM\\DortanApp\\DortanApp.csproj",
+      "packagesPath": "C:\\Users\\abdoulvt\\.nuget\\packages\\",
+      "outputPath": "P:\\BUT\\S2\\SAE 2.01 Conception et développement\\SAE_DORTAN\\Dortan_IHM\\DortanApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\cetinkam\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\abdoulvt\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
