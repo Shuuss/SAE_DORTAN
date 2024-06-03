@@ -42,7 +42,7 @@ namespace DortanApp
             {
                 if (string.IsNullOrWhiteSpace(value))
                 {
-                    throw new ArgumentException("Le nom ne peut pas être vide ou null. fenerbahce");
+                    throw new ArgumentException("Le nom ne peut pas être vide ou null.");
                 }
                 nom = value;
             }

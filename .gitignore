@@ -398,4 +398,4 @@ FodyWeavers.xsd
 *.sln.iml
 
 #ignorer chaine de connection
-*.DataAccess.cs
+DataAccess.cs

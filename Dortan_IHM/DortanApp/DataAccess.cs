@@ -10,7 +10,7 @@ namespace DortanApp
         private static readonly string strConnexion =
             "Server=srv-peda-new;" +
             "Port=5433;" +
-            "Database=dortan;" +
+            "Database=cetinkam;" +
             "Search Path=dortan;" +
             "User Id=abdoulvt;" +
             "Password=q2hG71;";
