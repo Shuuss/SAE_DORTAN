@@ -10,8 +10,8 @@ namespace DortanApp
         private static readonly string strConnexion =
             "Server=srv-peda-new;" +
             "Port=5433;" +
-            "Database=cetinkam;" +
-            "Search Path=wpflients;" +
+            "Database=Dortan;" +
+            "Search Path=Dortan;" +
             "User Id=cetinkam;" +
             "Password=7jhqDh;";
 
