@@ -1,12 +1,69 @@
-﻿<Window x:Class="DortanApp.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:DortanApp"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+﻿<Window
+    x:Class="Dortan.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Dortan"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="fenetreReservation"
+    Width="400"
+    Height="450"
+    mc:Ignorable="d">
+    <StackPanel>
+        <Label
+            x:Name="labDortan"
+            HorizontalAlignment="Center"
+            Content="Dortan"
+            FontSize="36"
+            FontWeight="Bold" />
+        <Label
+            x:Name="labActivite"
+            Margin="60,13,60,0"
+            Content="Activité"
+            FontSize="20" />
+        <ComboBox
+            x:Name="cbActivite"
+            Width="240"
+            Margin="60,5,60,0"
+            HorizontalAlignment="Left" />
+        <Button
+            x:Name="btCreationActivite"
+            Margin="249,20,60,0"
+            Content="créer activité" />
+        <Label
+            x:Name="labDate"
+            Margin="60,0,60,0"
+            Content="Date"
+            FontSize="20" />
+        <DatePicker x:Name="dpDate" Margin="60,5,60,0" />
+        <Label
+            x:Name="labDuree"
+            Margin="60,0,60,0"
+            Content="Durée"
+            FontSize="20" />
+        <ComboBox
+            x:Name="cbDuree"
+            Width="240"
+            Margin="60,5,0,0"
+            HorizontalAlignment="Left" />
+        <StackPanel Margin="0,20,0,0" Orientation="Horizontal">
+            <Label
+                x:Name="labPrix"
+                Margin="60,0,0,0"
+                Content="Prix :" />
+            <TextBox
+                x:Name="tbPrix"
+                Width="100"
+                Margin="20,0,0,0" />
+        </StackPanel>
+        <Button
+            x:Name="btReserver"
+            Margin="150,30,150,0"
+            Content="Réserver" />
 
-    </Grid>
+
+
+
+
+    </StackPanel>
 </Window>
