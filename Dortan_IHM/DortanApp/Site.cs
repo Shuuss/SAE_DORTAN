@@ -32,10 +32,6 @@ namespace DortanApp
 
             set
             {
-                if (value <= 0)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(value), "L'identifiant doit être supérieur à zéro.");
-                }
                 id = value;
             }
         }
@@ -49,10 +45,6 @@ namespace DortanApp
 
             set
             {
-                if (string.IsNullOrWhiteSpace(value))
-                {
-                    throw new ArgumentException("Le nom ne peut pas être vide ou nul.", nameof(value));
-                }
                 nom = value;
             }
         }
@@ -79,10 +71,6 @@ namespace DortanApp
 
             set
             {
-                if (string.IsNullOrWhiteSpace(value))
-                {
-                    throw new ArgumentException("Le nom du responsable ne peut pas être vide ou nul.", nameof(value));
-                }
                 nomResponsable = value;
             }
         }
@@ -91,12 +79,12 @@ namespace DortanApp
         {
             get
             {
-                return horaire;
+                return this.horaire;
             }
 
             set
             {
-                horaire = value;
+                this.horaire = value;
             }
         }
     }

@@ -9,7 +9,7 @@ namespace DortanApp.config
     {
         private ObservableCollection<Employe> LesEmployes { get; set; }
         private ObservableCollection<Material> LesMateriels { get; set; }
-        private ObservableCollection<Activity> LesActivites { get; set; }
+        private ObservableCollection<Activite> LesActivites { get; set; }
         private ObservableCollection<Reservation> LesReservations { get; set; }
 
 
@@ -19,7 +19,7 @@ namespace DortanApp.config
         {
             LesEmployes = new ObservableCollection<Employe>();
             LesMateriels = new ObservableCollection<Material>();
-            LesActivites = new ObservableCollection<Activity>();
+            LesActivites = new ObservableCollection<Activite>();
             LesReservations = new ObservableCollection<Reservation>();
 
             Read();

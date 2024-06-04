@@ -5,19 +5,19 @@ namespace DortanApp
     public class Reservation
     {
         private int id;
-        private Activity activity;
+        private Activite activite;
         private DateTime dateReservation;
         private TimeSpan dureeReservation;
 
-        public Reservation(Activity activity, DateTime dateReservation, TimeSpan dureeReservation)
+        public Reservation(Activite activite, DateTime dateReservation, TimeSpan dureeReservation)
         {
-            this.Activity = activity;
+            this.Activite = activite;
             this.DateReservation = dateReservation;
             this.DureeReservation = dureeReservation;
         }
 
-        public Reservation(int id, Activity activity, DateTime dateReservation, TimeSpan dureeReservation)
-            : this(activity, dateReservation, dureeReservation)
+        public Reservation(int id, Activite activite, DateTime dateReservation, TimeSpan dureeReservation)
+            : this(activite, dateReservation, dureeReservation)
         {
             this.Id = id;
         }
@@ -31,28 +31,20 @@ namespace DortanApp
 
             set
             {
-                if (value <= 0)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(value), "L'identifiant doit être supérieur à zéro.");
-                }
                 id = value;
             }
         }
 
-        public Activity Activity
+        public Activite Activite
         {
             get
             {
-                return activity;
+                return activite;
             }
 
             set
             {
-                if (value == null)
-                {
-                    throw new ArgumentNullException(nameof(value), "L'activité ne peut pas être nulle.");
-                }
-                activity = value;
+                activite = value;
             }
         }
 
@@ -65,10 +57,6 @@ namespace DortanApp
 
             set
             {
-                if (value < DateTime.Now)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(value), "La date de réservation ne peut pas être dans le passé.");
-                }
                 dateReservation = value;
             }
         }
@@ -77,16 +65,12 @@ namespace DortanApp
         {
             get
             {
-                return dureeReservation;
+                return this.dureeReservation;
             }
 
             set
             {
-                if (value <= TimeSpan.Zero)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(value), "La durée de réservation doit être supérieure à zéro.");
-                }
-                dureeReservation = value;
+                this.dureeReservation = value;
             }
         }
     }
