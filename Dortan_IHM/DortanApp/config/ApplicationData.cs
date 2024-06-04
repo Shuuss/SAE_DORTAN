@@ -7,8 +7,8 @@ namespace DortanApp.config
 {
     public class ApplicationData
     {
-        private ObservableCollection<Employe> LesUsers { get; set; }
-        private ObservableCollection<Material> LesMateriaux { get; set; }
+        private ObservableCollection<Employe> LesEmployes { get; set; }
+        private ObservableCollection<Material> LesMateriels { get; set; }
         private ObservableCollection<Activity> LesActivites { get; set; }
         private ObservableCollection<Reservation> LesReservations { get; set; }
 
@@ -17,42 +17,12 @@ namespace DortanApp.config
 
         public ApplicationData()
         {
-            LesUsers = new ObservableCollection<Employe>();
-            LesMateriaux = new ObservableCollection<Material>();
+            LesEmployes = new ObservableCollection<Employe>();
+            LesMateriels = new ObservableCollection<Material>();
             LesActivites = new ObservableCollection<Activity>();
             LesReservations = new ObservableCollection<Reservation>();
 
-            ConnexionBD();
             Read();
-        }
-
-        public void ConnexionBD()
-        {
-            try
-            {
-                Connexion = new NpgsqlConnection
-                {
-                    ConnectionString = "Server=srv-peda-new; port=5433; Database=cetinkam; Search Path=dortan; uid=cetinkam; password=7jhqDh;"
-                };
-                Connexion.Open();
-                Console.WriteLine("Connexion réussie !");
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("Problème de connexion : " + e.Message, "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
-        public void DeconnexionBD()
-        {
-            try
-            {
-                Connexion.Close();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Problème à la déconnexion : " + e);
-            }
         }
 
         public int Read()
@@ -67,7 +37,7 @@ namespace DortanApp.config
                     foreach (DataRow res in dataTable.Rows)
                     {
                         Employe nouveau = new Employe(int.Parse(res["id"].ToString()), res["identifiant"].ToString());
-                        LesUsers.Add(nouveau);
+                        LesEmployes.Add(nouveau);
                     }
                     return dataTable.Rows.Count;
                 }
