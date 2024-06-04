@@ -22,10 +22,6 @@ namespace DortanApp
 
             set
             {
-                if (value == null)
-                {
-                    throw new ArgumentNullException(nameof(value), "La réservation ne peut pas être nulle.");
-                }
                 reservation = value;
             }
         }
@@ -34,16 +30,12 @@ namespace DortanApp
         {
             get
             {
-                return material;
+                return this.material;
             }
 
             set
             {
-                if (value == null)
-                {
-                    throw new ArgumentNullException(nameof(value), "Le matériau ne peut pas être nul.");
-                }
-                material = value;
+                this.material = value;
             }
         }
     }

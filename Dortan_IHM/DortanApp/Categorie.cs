@@ -15,16 +15,12 @@ namespace DortanApp
         {
             get
             {
-                return nom;
+                return this.nom;
             }
 
             set
             {
-                if (string.IsNullOrWhiteSpace(value))
-                {
-                    throw new ArgumentException("Le nom ne peut pas être vide ou nul.", nameof(value));
-                }
-                nom = value;
+                this.nom = value;
             }
         }
     }

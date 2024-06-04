@@ -24,10 +24,6 @@ namespace DortanApp
 
             set
             {
-                if (value == null)
-                {
-                    throw new ArgumentNullException(nameof(value), "Le matériau ne peut pas être nul.");
-                }
                 material = value;
             }
         }
@@ -41,10 +37,6 @@ namespace DortanApp
 
             set
             {
-                if (value == null)
-                {
-                    throw new ArgumentNullException(nameof(value), "La caractéristique ne peut pas être nulle.");
-                }
                 caracteristique = value;
             }
         }
@@ -53,12 +45,12 @@ namespace DortanApp
         {
             get
             {
-                return valeurCaracteristique;
+                return this.valeurCaracteristique;
             }
 
             set
             {
-                valeurCaracteristique = value;
+                this.valeurCaracteristique = value;
             }
         }
     }

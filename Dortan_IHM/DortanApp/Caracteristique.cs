@@ -26,10 +26,6 @@ namespace DortanApp
 
             set
             {
-                if (value <= 0)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(value), "L'identifiant doit être supérieur à zéro.");
-                }
                 id = value;
             }
         }
@@ -38,16 +34,12 @@ namespace DortanApp
         {
             get
             {
-                return nom;
+                return this.nom;
             }
 
             set
             {
-                if (string.IsNullOrWhiteSpace(value))
-                {
-                    throw new ArgumentException("Le nom ne peut pas être vide ou nul.", nameof(value));
-                }
-                nom = value;
+                this.nom = value;
             }
         }
     }

@@ -14,34 +14,30 @@
     public class Material
     {
         private int id;
-        private Categorie nom_categorie;
+        private Categorie nomCategorie;
         private Site site;
         private Type type;
-        private string nom_materiel;
-        private string lien_photo;
+        private string nom;
+        private string lienPhoto;
         private MarqueEnum marque;
         private string description;
-        private int puissance_cv;
-        private int? puissance_w;
-        private int cout_utilisation;
+        private int puissanceCV;
+        private int? puissanceW;
+        private int coutUtilisation;
 
-        public Material(Categorie nom_categorie, Site site, Type type, string nom_materiel, string lien_photo, MarqueEnum marque, string description, int puissance_cv, int? puissance_w, int cout_utilisation)
-        {
-            this.Nom_categorie = nom_categorie;
-            this.Site = site;
-            this.Type = type;
-            this.Nom_materiel = nom_materiel;
-            this.Lien_photo = lien_photo;
-            this.Marque = marque;
-            this.Description = description;
-            this.Puissance_cv = puissance_cv;
-            this.Puissance_w = puissance_w;
-            this.Cout_utilisation = cout_utilisation;
-        }
-
-        public Material(int id, Categorie nom_categorie, Site site, Type type, string nom_materiel, string lien_photo, MarqueEnum marque, string description, int puissance_cv, int? puissance_w, int cout_utilisation) : this(nom_categorie, site, type, nom_materiel, lien_photo, marque, description, puissance_cv, puissance_w, cout_utilisation)
+        public Material(int id, Categorie nomCategorie, Site site, Type type, string nom, string lienPhoto, MarqueEnum marque, string description, int puissanceCV, int? puissanceW, int coutUtilisation)
         {
             this.Id = id;
+            this.NomCategorie = nomCategorie;
+            this.Site = site;
+            this.Type = type;
+            this.Nom = nom;
+            this.LienPhoto = lienPhoto;
+            this.Marque = marque;
+            this.Description = description;
+            this.PuissanceCV = puissanceCV;
+            this.PuissanceW = puissanceW;
+            this.CoutUtilisation = coutUtilisation;
         }
 
         public int Id
@@ -53,28 +49,20 @@
 
             set
             {
-                if (value <= 0)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(Id), "L'Id doit être supérieur à zéro.");
-                }
                 id = value;
             }
         }
 
-        public Categorie Nom_categorie
+        public Categorie NomCategorie
         {
             get
             {
-                return nom_categorie;
+                return nomCategorie;
             }
 
             set
             {
-                if (value == null)
-                {
-                    throw new ArgumentNullException(nameof(Nom_categorie), "La catégorie ne peut pas être nulle.");
-                }
-                nom_categorie = value;
+                nomCategorie = value;
             }
         }
 
@@ -87,10 +75,6 @@
 
             set
             {
-                if (value == null)
-                {
-                    throw new ArgumentNullException(nameof(Site), "Le site ne peut pas être nul.");
-                }
                 site = value;
             }
         }
@@ -104,45 +88,33 @@
 
             set
             {
-                if (value == null)
-                {
-                    throw new ArgumentNullException(nameof(Type), "Le type ne peut pas être nul.");
-                }
                 type = value;
             }
         }
 
-        public string Nom_materiel
+        public string Nom
         {
             get
             {
-                return nom_materiel;
+                return nom;
             }
 
             set
             {
-                if (string.IsNullOrWhiteSpace(value))
-                {
-                    throw new ArgumentException("Le nom du matériel ne peut pas être nul ou vide.", nameof(Nom_materiel));
-                }
-                nom_materiel = value;
+                nom = value;
             }
         }
 
-        public string Lien_photo
+        public string LienPhoto
         {
             get
             {
-                return lien_photo;
+                return lienPhoto;
             }
 
             set
             {
-                if (string.IsNullOrWhiteSpace(value))
-                {
-                    throw new ArgumentException("Le lien de la photo ne peut pas être nul ou vide.", nameof(Lien_photo));
-                }
-                lien_photo = value;
+                lienPhoto = value;
             }
         }
 
@@ -172,54 +144,42 @@
             }
         }
 
-        public int Puissance_cv
+        public int PuissanceCV
         {
             get
             {
-                return puissance_cv;
+                return puissanceCV;
             }
 
             set
             {
-                if (value < 0)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(Puissance_cv), "La puissance en CV ne peut pas être négative.");
-                }
-                puissance_cv = value;
+                puissanceCV = value;
             }
         }
 
-        public int? Puissance_w
+        public int? PuissanceW
         {
             get
             {
-                return puissance_w;
+                return puissanceW;
             }
 
             set
             {
-                if (value < 0)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(Puissance_w), "La puissance en watts ne peut pas être négative.");
-                }
-                puissance_w = value;
+                puissanceW = value;
             }
         }
 
-        public int Cout_utilisation
+        public int CoutUtilisation
         {
             get
             {
-                return cout_utilisation;
+                return this.coutUtilisation;
             }
 
             set
             {
-                if (value < 0)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(Cout_utilisation), "Le coût d'utilisation ne peut pas être négatif.");
-                }
-                cout_utilisation = value;
+                this.coutUtilisation = value;
             }
         }
     }
