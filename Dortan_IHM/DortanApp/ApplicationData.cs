@@ -3,17 +3,69 @@ using System.Collections.ObjectModel;
 using System.Data;
 using System.Windows;
 
-namespace DortanApp.config
+namespace DortanApp
 {
     public class ApplicationData
     {
-        private ObservableCollection<Employe> LesEmployes { get; set; }
-        private ObservableCollection<Material> LesMateriels { get; set; }
-        private ObservableCollection<Activite> LesActivites { get; set; }
-        private ObservableCollection<Reservation> LesReservations { get; set; }
+        private ObservableCollection<Employe> lesEmployes;
+        private ObservableCollection<Material> lesMateriels;
+        private ObservableCollection<Activite> lesActivites;
+        private ObservableCollection<Reservation> lesReservations;
 
 
         private NpgsqlConnection Connexion { get; set; }
+
+        public ObservableCollection<Employe> LesEmployes
+        {
+            get
+            {
+                return lesEmployes;
+            }
+
+            set
+            {
+                lesEmployes = value;
+            }
+        }
+
+        public ObservableCollection<Material> LesMateriels
+        {
+            get
+            {
+                return lesMateriels;
+            }
+
+            set
+            {
+                lesMateriels = value;
+            }
+        }
+
+        public ObservableCollection<Activite> LesActivites
+        {
+            get
+            {
+                return lesActivites;
+            }
+
+            set
+            {
+                lesActivites = value;
+            }
+        }
+
+        public ObservableCollection<Reservation> LesReservations
+        {
+            get
+            {
+                return this.lesReservations;
+            }
+
+            set
+            {
+                this.lesReservations = value;
+            }
+        }
 
         public ApplicationData()
         {
