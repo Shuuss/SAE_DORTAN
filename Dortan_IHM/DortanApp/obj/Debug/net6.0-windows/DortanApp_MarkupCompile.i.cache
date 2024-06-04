@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 P:\BUT\S2\SAE 2.01 Conception et développement\SAE_DORTAN\Dortan_IHM\DortanApp\App.xaml
-8-325399904
+4603689509
 
-26-509845708
+222145108203
 197-354583538
-ActivityCreationWindow.xaml;Connexion.xaml;Creation.xaml;EquipmentListWindow.xaml;LoginWindow.xaml;MainWindow.xaml;Materiel.xaml;ReservationWindow.xaml;
+fenetres\Connexion.xaml;fenetres\Creation.xaml;fenetres\Materiel.xaml;fenetres\Reservation.xaml;
 
 False
 

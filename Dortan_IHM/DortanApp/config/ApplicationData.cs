@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using System.Data;
 using System.Windows;
 
-namespace DortanApp
+namespace DortanApp.config
 {
     public class ApplicationData
     {

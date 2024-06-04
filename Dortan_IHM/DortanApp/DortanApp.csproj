@@ -13,7 +13,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="ApplicationData.cs">
+    <Page Include="App.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="config\ApplicationData.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>
