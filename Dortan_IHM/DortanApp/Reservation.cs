@@ -6,18 +6,18 @@ namespace DortanApp
     {
         private int id;
         private Activity activity;
-        private DateTime date_reservation;
-        private TimeSpan duree_reservation;
+        private DateTime dateReservation;
+        private TimeSpan dureeReservation;
 
-        public Reservation(Activity activity, DateTime date_reservation, TimeSpan duree_reservation)
+        public Reservation(Activity activity, DateTime dateReservation, TimeSpan dureeReservation)
         {
             this.Activity = activity;
-            this.Date_reservation = date_reservation;
-            this.Duree_reservation = duree_reservation;
+            this.DateReservation = dateReservation;
+            this.DureeReservation = dureeReservation;
         }
 
-        public Reservation(int id, Activity activity, DateTime date_reservation, TimeSpan duree_reservation)
-            : this(activity, date_reservation, duree_reservation)
+        public Reservation(int id, Activity activity, DateTime dateReservation, TimeSpan dureeReservation)
+            : this(activity, dateReservation, dureeReservation)
         {
             this.Id = id;
         }
@@ -56,11 +56,11 @@ namespace DortanApp
             }
         }
 
-        public DateTime Date_reservation
+        public DateTime DateReservation
         {
             get
             {
-                return date_reservation;
+                return dateReservation;
             }
 
             set
@@ -69,15 +69,15 @@ namespace DortanApp
                 {
                     throw new ArgumentOutOfRangeException(nameof(value), "La date de réservation ne peut pas être dans le passé.");
                 }
-                date_reservation = value;
+                dateReservation = value;
             }
         }
 
-        public TimeSpan Duree_reservation
+        public TimeSpan DureeReservation
         {
             get
             {
-                return duree_reservation;
+                return dureeReservation;
             }
 
             set
@@ -86,7 +86,7 @@ namespace DortanApp
                 {
                     throw new ArgumentOutOfRangeException(nameof(value), "La durée de réservation doit être supérieure à zéro.");
                 }
-                duree_reservation = value;
+                dureeReservation = value;
             }
         }
     }
