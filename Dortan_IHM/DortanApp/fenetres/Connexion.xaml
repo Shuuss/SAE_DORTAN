@@ -5,22 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Dortan"
         mc:Ignorable="d"
-        Title="Connexion" Height="300" Width="400">
-    <StackPanel>
+        Title="Connexion" Height="300" Width="400" Closing="Window_Closing">
+    <StackPanel VerticalAlignment="Center">
         <Label
             x:Name="labConnexion"
+            Margin="0,0,0,20"
             HorizontalAlignment="Center"
             Content="Connexion"
             FontSize="36"
             FontWeight="Bold" />
-        <Label Margin="60,20,0,0" Content="Identifiant" />
-        <TextBox Margin="60,5,60,0" TextWrapping="Wrap" />
-        <Label Margin="60,20,0,0" Content="Mot de passe" />
-        <TextBox
-            Margin="60,5,60,0"
-            TextWrapping="Wrap" />
-        <Button Margin="100,40,100,0" Content="Se connecter" />
-
-
+        <Label Margin="60,5,60,0" Content="Identifiant" />
+        <TextBox x:Name="txtIdentifiant" Margin="60,5,60,0" />
+        <Label Margin="60,5,60,0" Content="Mot de passe" />
+        <PasswordBox x:Name="txtMotDePasse" Margin="60,5,60,0" />
+        <Button Margin="60,5,60,0" Content="Se connecter" Click="Button_Click" />
     </StackPanel>
 </Window>

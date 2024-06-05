@@ -1,16 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DortanApp.config;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Dortan
 {
@@ -22,6 +11,39 @@ namespace Dortan
         public Connexion()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            
+            string id = txtIdentifiant.Text;
+            string mdp = txtMotDePasse.Password;
+
+            DataAccess.Instance.UserId = id;
+            DataAccess.Instance.Password = mdp;
+
+            DataAccess dataAccess = DataAccess.Instance;
+
+            dataAccess.ConnexionBD();
+
+            if (dataAccess.Connexion != null && dataAccess.Connexion.State == System.Data.ConnectionState.Open)
+            {
+                MessageBox.Show("Connexion réussie à la base de données!");
+                DialogResult = true;
+            }
+            else
+            {
+                MessageBox.Show("Impossible de se connecter à la base de données.");
+            }
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (DialogResult != true)
+            {
+                Application.Current.Shutdown();
+            }
+            
         }
     }
 }

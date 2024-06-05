@@ -69,10 +69,8 @@ namespace DortanApp
 
         public ApplicationData()
         {
-            LesEmployes = new ObservableCollection<Employe>();
             LesMateriels = new ObservableCollection<Materiel>();
             LesActivites = new ObservableCollection<Activite>();
-            LesReservations = new ObservableCollection<Reservation>();
 
             Read();
         }

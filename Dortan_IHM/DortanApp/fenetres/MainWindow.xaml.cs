@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Dortan;
+using DortanApp;
 
 namespace DortanApp
 {
@@ -21,7 +23,13 @@ namespace DortanApp
     {
         public MainWindow()
         {
-            InitializeComponent();
+            Connexion connexion = new Connexion();
+            connexion.ShowDialog();
+            if (connexion.DialogResult == true)
+            {
+                InitializeComponent();
+            }
+            
         }
     }
 }

@@ -7,12 +7,12 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="MainWindow"
     Width="400"
-    Height="600"
+    Height="400"
     mc:Ignorable="d">
     <Grid>
         <TabControl>
 
-            <TabItem Header="Réservation">
+            <TabItem Header="Réserver">
                 <StackPanel>
                     <Label
                         x:Name="labActivite"
@@ -50,6 +50,8 @@
                         Content="Réserver" />
                 </StackPanel>
             </TabItem>
+
+
             <TabItem Header="Création">
                 <StackPanel>
                     <Label
@@ -60,11 +62,6 @@
                         FontWeight="Bold" />
                     <Label Margin="60,50,0,0" Content="Nom" />
                     <TextBox Margin="60,5,60,0" TextWrapping="Wrap" />
-                    <Label Margin="60,20,0,0" Content="Description" />
-                    <TextBox
-                        Height="50"
-                        Margin="60,5,60,0"
-                        TextWrapping="Wrap" />
                     <Button Margin="100,50,100,0" Content="Valider" />
                 </StackPanel>
             </TabItem>
