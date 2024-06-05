@@ -16,7 +16,7 @@
         private int id;
         private Categorie nomCategorie;
         private Site site;
-        private Type type;
+        private TypeMateriel type;
         private string nom;
         private string lienPhoto;
         private MarqueEnum marque;
@@ -25,7 +25,7 @@
         private int? puissanceW;
         private int coutUtilisation;
 
-        public Materiel(int id, Categorie nomCategorie, Site site, Type type, string nom, string lienPhoto, MarqueEnum marque, string description, int puissanceCV, int? puissanceW, int coutUtilisation)
+        public Materiel(int id, Categorie nomCategorie, Site site, TypeMateriel type, string nom, string lienPhoto, MarqueEnum marque, string description, int puissanceCV, int? puissanceW, int coutUtilisation)
         {
             this.Id = id;
             this.NomCategorie = nomCategorie;
@@ -79,7 +79,7 @@
             }
         }
 
-        public Type Type
+        public TypeMateriel Type
         {
             get
             {

@@ -10,17 +10,17 @@ namespace DortanApp
         private string nomResponsable;
         private string horaire;
 
-        public Site(string nom, string adresseRue, string nomResponsable, string horaire)
+        public Site(int id)
+        {
+            this.Id = id;
+        }
+
+        public Site(int id, string nom, string adresseRue, string nomResponsable, string horaire) : this (id)
         {
             this.Nom = nom;
             this.AdresseRue = adresseRue;
             this.NomResponsable = nomResponsable;
             this.Horaire = horaire;
-        }
-
-        public Site(int id, string nom, string adresseRue, string nomResponsable, string horaire) : this(nom, adresseRue, nomResponsable, horaire)
-        {
-            this.Id = id;
         }
 
         public int Id

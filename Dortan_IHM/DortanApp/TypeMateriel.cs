@@ -7,14 +7,14 @@ namespace DortanApp
         private int id;
         private string nom;
 
-        public TypeMateriel(string nom)
-        {
-            this.Nom = nom;
-        }
-
-        public TypeMateriel(int id, string nom) : this(nom)
+        public TypeMateriel(int id)
         {
             this.Id = id;
+        }
+
+        public TypeMateriel(int id, string nom) : this (id)
+        {
+            this.Nom = nom;
         }
 
         public int Id

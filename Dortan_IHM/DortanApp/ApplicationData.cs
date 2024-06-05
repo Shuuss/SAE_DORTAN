@@ -7,26 +7,10 @@ namespace DortanApp
 {
     public class ApplicationData
     {
-        private ObservableCollection<Employe> lesEmployes;
         private ObservableCollection<Materiel> lesMateriels;
         private ObservableCollection<Activite> lesActivites;
-        private ObservableCollection<Reservation> lesReservations;
-
 
         private NpgsqlConnection Connexion { get; set; }
-
-        public ObservableCollection<Employe> LesEmployes
-        {
-            get
-            {
-                return lesEmployes;
-            }
-
-            set
-            {
-                lesEmployes = value;
-            }
-        }
 
         public ObservableCollection<Materiel> LesMateriels
         {
@@ -54,43 +38,67 @@ namespace DortanApp
             }
         }
 
-        public ObservableCollection<Reservation> LesReservations
-        {
-            get
-            {
-                return this.lesReservations;
-            }
-
-            set
-            {
-                this.lesReservations = value;
-            }
-        }
-
         public ApplicationData()
         {
             LesMateriels = new ObservableCollection<Materiel>();
             LesActivites = new ObservableCollection<Activite>();
 
-            Read();
+            ReaMaterield();
+            ReadActivite();
         }
 
-        public int Read()
+        public int ReaMaterield()
         {
-            const string sql = "SELECT id, identifiant FROM User";
+            String sql = "SELECT num_materiel, nom_categorie, num_site, num_type, nom_materiel, lien_photo, marque, description, puissance_cv, puissance_w, cout_utilisation FROM materiel";
             try
             {
-                using (var dataAdapter = new NpgsqlDataAdapter(sql, Connexion))
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter(sql, Connexion);
+                DataTable dataTable = new DataTable();
+                dataAdapter.Fill(dataTable);
+                foreach (DataRow res in dataTable.Rows)
                 {
-                    DataTable dataTable = new DataTable();
-                    dataAdapter.Fill(dataTable);
-                    foreach (DataRow res in dataTable.Rows)
-                    {
-                        Employe nouveau = new Employe(int.Parse(res["id"].ToString()), res["identifiant"].ToString());
-                        LesEmployes.Add(nouveau);
-                    }
-                    return dataTable.Rows.Count;
+                    Materiel nouveau = new Materiel(
+                        int.Parse(res["num_materiel"].ToString()),
+                        new Categorie(res["nom_categorie"].ToString()),
+                        new Site(int.Parse(res["num_site"].ToString())),
+                        new TypeMateriel(int.Parse(res["num_type"].ToString())),
+                        res["nom_materiel"].ToString(),
+                        res["lien_photo"].ToString(),
+                        (MarqueEnum)char.Parse(res["marque"].ToString()),
+                        res["description"].ToString(),
+                        int.Parse(res["puissance_cv"].ToString()),
+                        int.Parse(res["puissance_w"].ToString()),
+                        int.Parse(res["cout_utilisation"].ToString()));
+
+                    LesMateriels.Add(nouveau);
                 }
+                return dataTable.Rows.Count;
+            }
+            catch (NpgsqlException e)
+            {
+                Console.WriteLine("Problème de requête : " + e);
+                return 0;
+            }
+        }
+
+        public int ReadActivite()
+        {
+            String sql = "SELECT num_activite, nom_activite FROM activite";
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter(sql, Connexion);
+                DataTable dataTable = new DataTable();
+                dataAdapter.Fill(dataTable);
+                foreach (DataRow res in dataTable.Rows)
+
+                {
+                    Activite nouveau = new Activite(int.Parse(res["num_activite"].ToString()),
+                    res["nom_activite"].ToString());
+
+                    LesActivites.Add(nouveau);
+                }
+                return dataTable.Rows.Count;
+
             }
             catch (NpgsqlException e)
             {
@@ -116,21 +124,40 @@ namespace DortanApp
             }
         }
 
-        public int Create(Employe u)
+        public int CreateMateriel(Materiel m)
         {
-            string sql = $"INSERT INTO User (identifiant, mdp) VALUES ('{u.Identifiant}', '{u.Mdp}')";
+            string sql = $"INSERT INTO Materiel (num_materiel, nom_categorie, num_site, num_type, nom_materiel, lien_photo, marque, description, puissance_cv, puissance_w, cout_utilisation) VALUES ({m.Id}, '{m.NomCategorie}', {m.Site}, {m.Type}, '{m.Nom}', '{m.LienPhoto}', '{m.Marque}', '{m.Description}', {m.PuissanceCV}, {m.PuissanceW}, {m.CoutUtilisation})";
             return MethodeGenerique(sql);
         }
 
-        public int Update(Employe u)
+        public int UpdateMateriel(Materiel m)
         {
-            string sql = $"UPDATE User SET identifiant = '{u.Identifiant}', mdp = '{u.Mdp}' WHERE id = {u.Id}";
+            string sql = $"UPDATE Materiel SET nom_categorie = '{m.NomCategorie}', num_site = {m.Site}, num_type = {m.Type}, nom_materiel = '{m.Nom}', lien_photo = '{m.LienPhoto}', marque = '{m.Marque}', description = '{m.Description}', puissance_cv = {m.PuissanceCV}, puissance_w = {m.PuissanceW}, cout_utilisation = {m.CoutUtilisation} WHERE num_materiel = {m.Id}";
             return MethodeGenerique(sql);
         }
 
-        public int Delete(Employe u)
+        public int DeleteMateriel(Materiel m)
         {
-            string sql = $"DELETE FROM User WHERE id = {u.Id}";
+            string sql = $"DELETE FROM Materiel WHERE num_materiel = {m.Id}";
+            return MethodeGenerique(sql);
+        }
+
+
+        public int CreateActivite(Activite a)
+        {
+            string sql = $"INSERT INTO Activite (num_activite, nom_activite) VALUES ({a.Id})";
+            return MethodeGenerique(sql);
+        }
+
+        public int UpdateActivite(Activite a)
+        {
+            string sql = $"UPDATE Activite SET nom_activite = '{a.Nom}' WHERE num_activite = {a.Id}";
+            return MethodeGenerique(sql);
+        }
+
+        public int DeleteActivite(Activite a)
+        {
+            string sql = $"DELETE FROM Activite WHERE num_activite = {a.Id}";
             return MethodeGenerique(sql);
         }
     }
