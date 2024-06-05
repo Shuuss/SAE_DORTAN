@@ -5,9 +5,9 @@ namespace DortanApp
     public class Concerne
     {
         private Reservation reservation;
-        private Material material;
+        private Materiel material;
 
-        public Concerne(Reservation reservation, Material material)
+        public Concerne(Reservation reservation, Materiel material)
         {
             this.Reservation = reservation;
             this.Material = material;
@@ -26,7 +26,7 @@ namespace DortanApp
             }
         }
 
-        public Material Material
+        public Materiel Material
         {
             get
             {

@@ -4,18 +4,18 @@ namespace DortanApp
 {
     public class DetailCaracteristique
     {
-        private Material material;
+        private Materiel material;
         private Caracteristique caracteristique;
         private string valeurCaracteristique;
 
-        public DetailCaracteristique(Material material, Caracteristique caracteristique, string valeurCaracteristique)
+        public DetailCaracteristique(Materiel material, Caracteristique caracteristique, string valeurCaracteristique)
         {
             this.Material = material;
             this.Caracteristique = caracteristique;
             this.ValeurCaracteristique = valeurCaracteristique;
         }
 
-        public Material Material
+        public Materiel Material
         {
             get
             {

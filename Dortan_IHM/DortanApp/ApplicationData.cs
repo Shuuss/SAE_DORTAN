@@ -8,7 +8,7 @@ namespace DortanApp
     public class ApplicationData
     {
         private ObservableCollection<Employe> lesEmployes;
-        private ObservableCollection<Material> lesMateriels;
+        private ObservableCollection<Materiel> lesMateriels;
         private ObservableCollection<Activite> lesActivites;
         private ObservableCollection<Reservation> lesReservations;
 
@@ -28,7 +28,7 @@ namespace DortanApp
             }
         }
 
-        public ObservableCollection<Material> LesMateriels
+        public ObservableCollection<Materiel> LesMateriels
         {
             get
             {
@@ -70,7 +70,7 @@ namespace DortanApp
         public ApplicationData()
         {
             LesEmployes = new ObservableCollection<Employe>();
-            LesMateriels = new ObservableCollection<Material>();
+            LesMateriels = new ObservableCollection<Materiel>();
             LesActivites = new ObservableCollection<Activite>();
             LesReservations = new ObservableCollection<Reservation>();
 

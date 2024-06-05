@@ -11,7 +11,7 @@
         EuropaKimanche
     }
 
-    public class Material
+    public class Materiel
     {
         private int id;
         private Categorie nomCategorie;
@@ -25,7 +25,7 @@
         private int? puissanceW;
         private int coutUtilisation;
 
-        public Material(int id, Categorie nomCategorie, Site site, Type type, string nom, string lienPhoto, MarqueEnum marque, string description, int puissanceCV, int? puissanceW, int coutUtilisation)
+        public Materiel(int id, Categorie nomCategorie, Site site, Type type, string nom, string lienPhoto, MarqueEnum marque, string description, int puissanceCV, int? puissanceW, int coutUtilisation)
         {
             this.Id = id;
             this.NomCategorie = nomCategorie;

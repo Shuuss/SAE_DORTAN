@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-P:\SAE 2.01 Conception et développement\SAE_DORTAN\Dortan_IHM\DortanApp\obj\Debug\net6.0-windows\
+P:\BUT\S2\SAE 2.01 Conception et développement\SAE_DORTAN\Dortan_IHM\DortanApp\obj\Debug\net6.0-windows\
 DortanApp
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-P:\SAE 2.01 Conception et développement\SAE_DORTAN\Dortan_IHM\DortanApp\App.xaml
-4603689509
+P:\BUT\S2\SAE 2.01 Conception et développement\SAE_DORTAN\Dortan_IHM\DortanApp\App.xaml
+5-1057221004
 
-211752711706
+22-1188770748
 194-1976662911
-fenetres\Connexion.xaml;fenetres\Creation.xaml;fenetres\Materiel.xaml;fenetres\Reservation.xaml;
+fenetres\Connexion.xaml;fenetres\Creation.xaml;fenetres\MainWindow.xaml;fenetres\Materiel.xaml;fenetres\Reservation.xaml;
 
 True
 
