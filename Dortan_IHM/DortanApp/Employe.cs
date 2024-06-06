@@ -85,6 +85,7 @@ namespace DortanApp
             this.Identifiant = identifiant;
         }
 
+        public Employe() { }
         
     }
 }
