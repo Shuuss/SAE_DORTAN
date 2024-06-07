@@ -103,7 +103,6 @@ P:\BUT\S2\SAE 2.01 Conception et développement\SAE_DORTAN\Dortan_IHM\DortanApp\
 P:\BUT\S2\SAE 2.01 Conception et développement\SAE_DORTAN\Dortan_IHM\DortanApp\obj\Debug\net6.0-windows\fenetres\Materiel.g.cs
 P:\BUT\S2\SAE 2.01 Conception et développement\SAE_DORTAN\Dortan_IHM\DortanApp\obj\Debug\net6.0-windows\fenetres\Reservation.g.cs
 P:\BUT\S2\SAE 2.01 Conception et développement\SAE_DORTAN\Dortan_IHM\DortanApp\obj\Debug\net6.0-windows\App.g.cs
-P:\BUT\S2\SAE 2.01 Conception et développement\SAE_DORTAN\Dortan_IHM\DortanApp\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
 P:\BUT\S2\SAE 2.01 Conception et développement\SAE_DORTAN\Dortan_IHM\DortanApp\obj\Debug\net6.0-windows\DortanApp_MarkupCompile.cache
 P:\BUT\S2\SAE 2.01 Conception et développement\SAE_DORTAN\Dortan_IHM\DortanApp\obj\Debug\net6.0-windows\DortanApp_MarkupCompile.lref
 P:\BUT\S2\SAE 2.01 Conception et développement\SAE_DORTAN\Dortan_IHM\DortanApp\bin\Debug\net6.0-windows\ApplicationData.cs
@@ -142,3 +141,5 @@ P:\BUT\S2\SAE 2.01 Conception et développement\SAE_DORTAN\Dortan_IHM\DortanApp\
 P:\BUT\S2\SAE 2.01 Conception et développement\SAE_DORTAN\Dortan_IHM\DortanApp\obj\Debug\net6.0-windows\fenetres\UCReservation.baml
 P:\BUT\S2\SAE 2.01 Conception et développement\SAE_DORTAN\Dortan_IHM\DortanApp\obj\Debug\net6.0-windows\fenetres\DetailsMateriel.g.cs
 P:\BUT\S2\SAE 2.01 Conception et développement\SAE_DORTAN\Dortan_IHM\DortanApp\obj\Debug\net6.0-windows\fenetres\DetailsMateriel.baml
+P:\BUT\S2\SAE 2.01 Conception et développement\SAE_DORTAN\Dortan_IHM\DortanApp\obj\Debug\net6.0-windows\fenetres\VisuReserver.g.cs
+P:\BUT\S2\SAE 2.01 Conception et développement\SAE_DORTAN\Dortan_IHM\DortanApp\obj\Debug\net6.0-windows\fenetres\VisuReserver.baml

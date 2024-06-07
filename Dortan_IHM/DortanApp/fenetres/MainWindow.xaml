@@ -10,12 +10,7 @@
     Height="600"
     Closing="Window_Closing"
     mc:Ignorable="d">
-
-    <Window.DataContext>
-        <local:ApplicationData x:Name="data" />
-    </Window.DataContext>
-
-    <Grid>
+<Grid>
         <TabControl>
             <TabItem x:Name="tiReserver" Header="Réserver" />
 

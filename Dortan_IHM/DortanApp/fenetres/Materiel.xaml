@@ -14,7 +14,7 @@
             <ColumnDefinition x:Name="gauche" Width="2*" />
             <ColumnDefinition x:Name="droite" Width="3*" />
         </Grid.ColumnDefinitions>
-        <DataGrid x:Name="dbMateriel" Grid.Column="1">
+        <DataGrid x:Name="dbMateriel" Grid.Column="1" SelectionChanged="dbMateriel_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nom Matériel" />
                 <DataGridTextColumn Header="Type produit" />
@@ -53,8 +53,7 @@
                 Margin="0,50,0,0"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Bottom"
-                Click="btValider_Click"
-                Content="Valider" />
+                Content="Valider" Click="btValider_Click" />
         </StackPanel>
 
 
