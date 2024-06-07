@@ -396,6 +396,3 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
-
-#ignorer chaine de connection
-DataAccess.cs
