@@ -94,11 +94,6 @@ namespace DortanApp
                 Console.WriteLine("Problème de requête : " + e.Message);
                 return 0;
             }
-            catch (Exception e)
-            {
-                Console.WriteLine("Une erreur est survenue : " + e.Message);
-                return 0;
-            }
         }
 
         public int ReadActivite()
@@ -129,11 +124,10 @@ namespace DortanApp
         {
             try
             {
-                using (var cmd = new NpgsqlCommand(sql, Connexion))
-                {
-                    int nb = cmd.ExecuteNonQuery();
-                    return nb; // nb permet de connaître le nb de lignes affectées par un insert, update, delete
-                }
+                NpgsqlCommand cmd = new NpgsqlCommand(sql, Connexion);
+                int nb = cmd.ExecuteNonQuery();
+                return nb; // nb permet de connaître le nb de lignes affectées par un insert, update, delete
+
             }
             catch (Exception sqlE)
             {

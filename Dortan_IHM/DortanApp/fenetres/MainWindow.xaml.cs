@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Dortan;
 using DortanApp;
+using DortanApp.config;
 
 namespace DortanApp
 {
@@ -30,6 +31,11 @@ namespace DortanApp
                 InitializeComponent();
             }
             
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            DataAccess.Instance.DeconnexionBD();
         }
     }
 }
