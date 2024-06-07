@@ -140,8 +140,6 @@ P:\BUT\S2\SAE 2.01 Conception et développement\SAE_DORTAN\Dortan_IHM\DortanApp\
 P:\BUT\S2\SAE 2.01 Conception et développement\SAE_DORTAN\Dortan_IHM\DortanApp\obj\Debug\net6.0-windows\fenetres\UCReservation.baml
 P:\BUT\S2\SAE 2.01 Conception et développement\SAE_DORTAN\Dortan_IHM\DortanApp\obj\Debug\net6.0-windows\fenetres\DetailsMateriel.g.cs
 P:\BUT\S2\SAE 2.01 Conception et développement\SAE_DORTAN\Dortan_IHM\DortanApp\obj\Debug\net6.0-windows\fenetres\DetailsMateriel.baml
-P:\BUT\S2\SAE 2.01 Conception et développement\SAE_DORTAN\Dortan_IHM\DortanApp\obj\Debug\net6.0-windows\fenetres\VisuReserver.g.cs
-P:\BUT\S2\SAE 2.01 Conception et développement\SAE_DORTAN\Dortan_IHM\DortanApp\obj\Debug\net6.0-windows\fenetres\VisuReserver.baml
 P:\SAE 2.01 Conception et développement\SAE_DORTAN\Dortan_IHM\DortanApp\obj\Debug\net6.0-windows\fenetres\DetailsMateriel.g.cs
 P:\SAE 2.01 Conception et développement\SAE_DORTAN\Dortan_IHM\DortanApp\obj\Debug\net6.0-windows\fenetres\UCCreation.g.cs
 P:\SAE 2.01 Conception et développement\SAE_DORTAN\Dortan_IHM\DortanApp\obj\Debug\net6.0-windows\fenetres\UCReservation.g.cs
@@ -152,3 +150,7 @@ P:\SAE 2.01 Conception et développement\SAE_DORTAN\Dortan_IHM\DortanApp\obj\Deb
 P:\SAE 2.01 Conception et développement\SAE_DORTAN\Dortan_IHM\DortanApp\obj\Debug\net6.0-windows\fenetres\UCVisuReserver.baml
 P:\SAE 2.01 Conception et développement\SAE_DORTAN\Dortan_IHM\DortanApp\obj\Debug\net6.0-windows\fenetres\UCMateriel.g.cs
 P:\SAE 2.01 Conception et développement\SAE_DORTAN\Dortan_IHM\DortanApp\obj\Debug\net6.0-windows\fenetres\UCMateriel.baml
+P:\BUT\S2\SAE 2.01 Conception et développement\SAE_DORTAN\Dortan_IHM\DortanApp\obj\Debug\net6.0-windows\fenetres\UCMateriel.g.cs
+P:\BUT\S2\SAE 2.01 Conception et développement\SAE_DORTAN\Dortan_IHM\DortanApp\obj\Debug\net6.0-windows\fenetres\UCVisuReserver.g.cs
+P:\BUT\S2\SAE 2.01 Conception et développement\SAE_DORTAN\Dortan_IHM\DortanApp\obj\Debug\net6.0-windows\fenetres\UCMateriel.baml
+P:\BUT\S2\SAE 2.01 Conception et développement\SAE_DORTAN\Dortan_IHM\DortanApp\obj\Debug\net6.0-windows\fenetres\UCVisuReserver.baml
