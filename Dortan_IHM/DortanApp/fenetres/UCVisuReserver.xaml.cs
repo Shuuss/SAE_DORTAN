@@ -17,9 +17,9 @@ namespace DortanApp
     /// <summary>
     /// Logique d'interaction pour VisuReserver.xaml
     /// </summary>
-    public partial class VisuReserver : Window
+    public partial class UCVisuReserver : UserControl
     {
-        public VisuReserver()
+        public UCVisuReserver()
         {
             InitializeComponent();
         }

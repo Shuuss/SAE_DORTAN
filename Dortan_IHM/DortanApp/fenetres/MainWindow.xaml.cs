@@ -32,6 +32,8 @@ namespace DortanApp
                 DataContext = new ApplicationData();
                 tiReserver.Content = new UCReservation();
                 tiCreer.Content = new UCCreation();
+                tiVisuReservation.Content = new UCVisuReserver();
+                tiMateriel.Content = new UCMateriel();
             }
             
         }

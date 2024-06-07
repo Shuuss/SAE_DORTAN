@@ -10,6 +10,7 @@ namespace DortanApp
     {
         private ObservableCollection<Materiel> lesMateriels;
         private ObservableCollection<Activite> lesActivites;
+        private ObservableCollection<Reservation> lesReservations;
 
         private NpgsqlConnection connexion;
 
@@ -53,18 +54,60 @@ namespace DortanApp
             }
         }
 
+        public ObservableCollection<Reservation> LesReservations
+        {
+            get
+            {
+                return lesReservations;
+            }
+
+            set
+            {
+                lesReservations = value;
+            }
+        }
+
         public ApplicationData()
         {
             this.LesMateriels = new ObservableCollection<Materiel>();
             this.LesActivites = new ObservableCollection<Activite>();
+            this.LesReservations = new ObservableCollection<Reservation>();
 
-            ReaMateriels();
+            ReadMateriels();
             ReadActivite();
+            ReadReservations();
         }
 
-        public int ReaMateriels()
+        private int ReadReservations()
         {
-            string sql = "SELECT num_materiel, nom_categorie, num_site, num_type, nom_materiel, lien_photo, marque, description, puissance_cv, puissance_w, cout_utilisation FROM materiel";
+            String sql = "SELECT num_reservation, num_activite, date_reservation, duree_reservation FROM reservation";
+            try
+            {
+                DataTable dataTable = DataAccess.Instance.GetData(sql);
+                foreach (DataRow res in dataTable.Rows)
+                {
+                    int numReservation = Convert.ToInt32(res["num_reservation"]);
+                    int numActivite = Convert.ToInt32(res["num_activite"]);
+                    DateTime date = DateTime.Parse(res["date_reservation"].ToString());
+                    int duree = Convert.ToInt32(res["duree_reservation"]);
+
+                    Reservation nouveau = new Reservation(numReservation, new Activite(numActivite), date, duree);
+
+                    LesReservations.Add(nouveau);
+                }
+
+                return dataTable.Rows.Count;
+            }
+            catch (NpgsqlException e)
+            {
+                Console.WriteLine("Problème de requête : " + e.Message);
+                return 0;
+            }
+        }
+
+        public int ReadMateriels()
+        {
+            String sql = "SELECT num_materiel, nom_categorie, num_site, num_type, nom_materiel, lien_photo, marque, description, puissance_cv, puissance_w, cout_utilisation FROM materiel";
             try
             {
                 DataTable dataTable = DataAccess.Instance.GetData(sql);

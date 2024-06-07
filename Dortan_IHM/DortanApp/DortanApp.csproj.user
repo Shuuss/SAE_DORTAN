@@ -11,7 +11,10 @@
     <Compile Update="fenetres\UCReservation.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="fenetres\VisuReserver.xaml.cs">
+    <Compile Update="fenetres\UCVisuReserver.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="fenetres\UCMateriel.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -37,7 +40,10 @@
     <Page Update="fenetres\UCReservation.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="fenetres\VisuReserver.xaml">
+    <Page Update="fenetres\UCVisuReserver.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="fenetres\UCMateriel.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

@@ -5,14 +5,14 @@
         private int id;
         private string nom;
 
-        public Activite(string nom)
-        {
-            this.Nom = nom;
-        }
-
-        public Activite(int id, string nom) : this(nom)
+        public Activite(int id)
         {
             this.Id = id;
+        }
+
+        public Activite(int id, string nom) : this(id)
+        {
+            this.Nom = nom;
         }
 
         public int Id

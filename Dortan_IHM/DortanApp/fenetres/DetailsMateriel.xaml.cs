@@ -26,16 +26,18 @@ namespace DortanApp
 
         public void AfficherDetails(DortanApp.Materiel materiel)
         {
-            lbNomCategorie.Content = materiel.NomCategorie;
-            lbDonneeSite.Content = materiel.Site;
-            lbDonneeType.Content = materiel.Type;
-            lbDonneeNomMateriel.Content = materiel.Nom;
-            lbDonneeNomMarque.Content = materiel.Marque;
-            lbDonneeDescritpion.Content = materiel.Description;
-            lbDonneePuissanceCV.Content = materiel.PuissanceCV;
-            lbDonneePuissanceW.Content = materiel.PuissanceW;
-            lbDonneeCoutUtilisation.Content = materiel.CoutUtilisation;
-
+            if(materiel !=  null)
+            {
+                lbNomCategorie.Content = materiel.NomCategorie;
+                lbDonneeSite.Content = materiel.Site;
+                lbDonneeType.Content = materiel.Type;
+                lbDonneeNomMateriel.Content = materiel.Nom;
+                lbDonneeNomMarque.Content = materiel.Marque;
+                lbDonneeDescritpion.Content = materiel.Description;
+                lbDonneePuissanceCV.Content = materiel.PuissanceCV;
+                lbDonneePuissanceW.Content = materiel.PuissanceW;
+                lbDonneeCoutUtilisation.Content = materiel.CoutUtilisation;
+            }
         }
 
         private void btOK_Click(object sender, RoutedEventArgs e)

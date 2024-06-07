@@ -1,18 +1,17 @@
-﻿using DortanApp;
-using System.Windows;
+﻿using System.Windows;
+using System.Windows.Controls;
 
-namespace Dortan
+namespace DortanApp
 {
     /// <summary>
-    /// Logique d'interaction pour Materiel.xaml
+    /// Logique d'interaction pour UCMateriel.xaml
     /// </summary>
-    public partial class Materiel : Window
+    public partial class UCMateriel : UserControl
     {
-        public Materiel()
+        public UCMateriel()
         {
             InitializeComponent();
         }
-
 
         private void btValider_Click(object sender, RoutedEventArgs e)
         {
@@ -35,11 +34,10 @@ namespace Dortan
 
         private void dbMateriel_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-            DortanApp.Materiel materielSelectionne = (DortanApp.Materiel)dbMateriel.SelectedItem;
-            DetailsMateriel details = new DetailsMateriel();
-
             if (dbMateriel.SelectedItem != null)
             {
+                DortanApp.Materiel materielSelectionne = (DortanApp.Materiel)dbMateriel.SelectedItem;
+                DetailsMateriel details = new DetailsMateriel();
                 details.AfficherDetails(materielSelectionne);
                 details.ShowDialog();
 
