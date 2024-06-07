@@ -17,61 +17,9 @@
 
     <Grid>
         <TabControl>
+            <TabItem x:Name="tiReserver" Header="Réserver" />
 
-            <TabItem Header="Réserver">
-                <StackPanel>
-                    <Label
-                        x:Name="labActivite"
-                        Margin="60,13,60,0"
-                        Content="Activité"
-                        FontSize="20" />
-                    <DataGrid
-                        Width="290"
-                        Height="200"
-                        ItemsSource="{Binding LesActivites}" />
-
-                    <Button
-                        x:Name="btCreationActivite"
-                        Margin="249,20,60,0"
-                        Content="créer activité" />
-                    <Label
-                        x:Name="labDate"
-                        Margin="60,0,60,0"
-                        Content="Date"
-                        FontSize="20" />
-                    <DatePicker x:Name="dpDate" Margin="60,5,60,0" />
-                    <Label
-                        x:Name="labDuree"
-                        Margin="60,0,60,0"
-                        Content="Durée"
-                        FontSize="20" />
-                    <ComboBox
-                        x:Name="cbDuree"
-                        Width="240"
-                        Margin="60,5,0,0"
-                        HorizontalAlignment="Left" />
-                    <Button
-                        x:Name="btReserver"
-                        Margin="150,30,150,0"
-                        Content="Réserver" />
-                </StackPanel>
-            </TabItem>
-
-
-            <TabItem Header="Création">
-                <StackPanel>
-                    <Label
-                        x:Name="labCreer"
-                        HorizontalAlignment="Center"
-                        Content="Créer Activité"
-                        FontSize="36"
-                        FontWeight="Bold" />
-                    <Label Margin="60,50,0,0" Content="Nom" />
-                    <TextBox Margin="60,5,60,0" TextWrapping="Wrap" />
-                    <Button Margin="100,50,100,0" Content="Valider" />
-                </StackPanel>
-            </TabItem>
-
+            <TabItem x:Name="tiCreer" Header="Création" />
 
             <TabItem Header="Matériel">
                 <StackPanel>

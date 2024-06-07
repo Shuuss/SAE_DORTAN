@@ -5,6 +5,12 @@
     <Compile Update="fenetres\MainWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="fenetres\UCCreation.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="fenetres\UCReservation.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="fenetres\Connexion.xaml">
@@ -17,6 +23,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="fenetres\MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="fenetres\UCCreation.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="fenetres\UCReservation.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

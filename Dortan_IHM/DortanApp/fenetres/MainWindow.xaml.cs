@@ -29,6 +29,8 @@ namespace DortanApp
             if (connexion.DialogResult == true)
             {
                 InitializeComponent();
+                tiReserver.Content = new UCReservation();
+                tiCreer.Content = new UCCreation();
             }
             
         }
