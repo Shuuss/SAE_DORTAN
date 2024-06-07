@@ -24,5 +24,12 @@ namespace DortanApp
         {
             InitializeComponent();
         }
+
+        private void btReserver_Click(object sender, RoutedEventArgs e)
+        {
+            Activite activite = dgActivite.SelectedItem as Activite;
+            Recap recap = new Recap(activite.Nom,dpDate,tbDuree.Text);
+            recap.ShowDialog();
+        }
     }
 }

@@ -15,6 +15,7 @@
             Content="Activité"
             FontSize="20" />
         <DataGrid
+            x:Name="dgActivite"
             Width="290"
             Height="200"
             ItemsSource="{Binding LesActivites}" />
@@ -34,12 +35,14 @@
             Margin="60,0,60,0"
             Content="Durée (Heures)"
             FontSize="20" />
-        <TextBox x:Name="tbDuree"
+        <TextBox
+            x:Name="tbDuree"
             Margin="60,5,60,0"
             TextWrapping="Wrap" />
         <Button
             x:Name="btReserver"
             Margin="150,30,150,0"
+            Click="btReserver_Click"
             Content="Réserver" />
 
     </StackPanel>
