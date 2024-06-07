@@ -7,16 +7,16 @@ namespace DortanApp
         private int id;
         private Activite activite;
         private DateTime dateReservation;
-        private TimeSpan dureeReservation;
+        private int dureeReservation;
 
-        public Reservation(Activite activite, DateTime dateReservation, TimeSpan dureeReservation)
+        public Reservation(Activite activite, DateTime dateReservation, int dureeReservation)
         {
             this.Activite = activite;
             this.DateReservation = dateReservation;
             this.DureeReservation = dureeReservation;
         }
 
-        public Reservation(int id, Activite activite, DateTime dateReservation, TimeSpan dureeReservation)
+        public Reservation(int id, Activite activite, DateTime dateReservation, int dureeReservation)
             : this(activite, dateReservation, dureeReservation)
         {
             this.Id = id;
@@ -57,11 +57,14 @@ namespace DortanApp
 
             set
             {
+                if (value.Date < DateTime.Now)
+                    throw new ArgumentOutOfRangeException("La date de réservation ne peut être déjà passée");
+
                 dateReservation = value;
             }
         }
 
-        public TimeSpan DureeReservation
+        public int DureeReservation
         {
             get
             {
@@ -70,7 +73,11 @@ namespace DortanApp
 
             set
             {
-                this.dureeReservation = value;
+                if (value <= 0)
+                {
+                    throw new ArgumentException("la durée ne doit pas être nulle ou négative");
+                }
+                dureeReservation = value;
             }
         }
     }

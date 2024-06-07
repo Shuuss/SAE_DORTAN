@@ -13,6 +13,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="fenetres\DetailsMateriel.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="fenetres\Connexion.xaml">
       <SubType>Designer</SubType>
     </Page>
