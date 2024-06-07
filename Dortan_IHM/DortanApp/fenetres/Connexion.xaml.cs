@@ -8,25 +8,50 @@ namespace Dortan
     /// </summary>
     public partial class Connexion : Window
     {
+        private string identifiant;
+        private string mdp;
+
         public Connexion()
         {
             InitializeComponent();
         }
 
+        public string Identifiant
+        {
+            get
+            {
+                return identifiant;
+            }
+
+            set
+            {
+                identifiant = value;
+            }
+        }
+
+        public string Mdp
+        {
+            get
+            {
+                return mdp;
+            }
+
+            set
+            {
+                mdp = value;
+            }
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
-            string id = txtIdentifiant.Text;
-            string mdp = txtMotDePasse.Password;
-
-            DataAccess.Instance.UserId = id;
-            DataAccess.Instance.Password = mdp;
+            this.Identifiant = txtIdentifiant.Text;
+            this.Mdp = txtMotDePasse.Password.ToString();
 
             DataAccess dataAccess = DataAccess.Instance;
 
-            dataAccess.ConnexionBD();
+            dataAccess.ConnexionBD(Identifiant, Mdp);
 
-            if (dataAccess.Connexion != null && dataAccess.Connexion.State == System.Data.ConnectionState.Open)
+            if (dataAccess.Connexion?.State == System.Data.ConnectionState.Open)
             {
                 MessageBox.Show("Connexion réussie à la base de données!");
                 DialogResult = true;
@@ -35,6 +60,7 @@ namespace Dortan
             {
                 MessageBox.Show("Impossible de se connecter à la base de données.");
             }
+
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -43,7 +69,7 @@ namespace Dortan
             {
                 Application.Current.Shutdown();
             }
-            
+
         }
     }
 }

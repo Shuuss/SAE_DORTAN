@@ -1,4 +1,5 @@
-﻿using Npgsql;
+﻿using DortanApp.config;
+using Npgsql;
 using System.Collections.ObjectModel;
 using System.Data;
 using System.Windows;
@@ -10,7 +11,7 @@ namespace DortanApp
         private ObservableCollection<Materiel> lesMateriels;
         private ObservableCollection<Activite> lesActivites;
 
-        private NpgsqlConnection Connexion { get; set; }
+        private NpgsqlConnection connexion;
 
         public ObservableCollection<Materiel> LesMateriels
         {
@@ -38,45 +39,64 @@ namespace DortanApp
             }
         }
 
+        public NpgsqlConnection Connexion
+        {
+            get
+            {
+                return connexion;
+            }
+
+            set
+            {
+                connexion = value;
+
+            }
+        }
+
         public ApplicationData()
         {
-            LesMateriels = new ObservableCollection<Materiel>();
-            LesActivites = new ObservableCollection<Activite>();
+            this.LesMateriels = new ObservableCollection<Materiel>();
+            this.LesActivites = new ObservableCollection<Activite>();
 
-            ReaMaterield();
+            ReaMateriels();
             ReadActivite();
         }
 
-        public int ReaMaterield()
+        public int ReaMateriels()
         {
-            String sql = "SELECT num_materiel, nom_categorie, num_site, num_type, nom_materiel, lien_photo, marque, description, puissance_cv, puissance_w, cout_utilisation FROM materiel";
+            string sql = "SELECT num_materiel, nom_categorie, num_site, num_type, nom_materiel, lien_photo, marque, description, puissance_cv, puissance_w, cout_utilisation FROM materiel";
             try
             {
-                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter(sql, Connexion);
-                DataTable dataTable = new DataTable();
-                dataAdapter.Fill(dataTable);
+                DataTable dataTable = DataAccess.Instance.GetData(sql);
                 foreach (DataRow res in dataTable.Rows)
                 {
-                    Materiel nouveau = new Materiel(
-                        int.Parse(res["num_materiel"].ToString()),
-                        new Categorie(res["nom_categorie"].ToString()),
-                        new Site(int.Parse(res["num_site"].ToString())),
-                        new TypeMateriel(int.Parse(res["num_type"].ToString())),
-                        res["nom_materiel"].ToString(),
-                        res["lien_photo"].ToString(),
-                        (MarqueEnum)char.Parse(res["marque"].ToString()),
-                        res["description"].ToString(),
-                        int.Parse(res["puissance_cv"].ToString()),
-                        int.Parse(res["puissance_w"].ToString()),
-                        int.Parse(res["cout_utilisation"].ToString()));
+                    int numMateriel = Convert.ToInt32(res["num_materiel"]);
+                    string nomCategorie = res["nom_categorie"].ToString();
+                    int numSite = Convert.ToInt32(res["num_site"]);
+                    int numType = Convert.ToInt32(res["num_type"]);
+                    string nomMateriel = res["nom_materiel"].ToString();
+                    string lienPhoto = res["lien_photo"].ToString();
+                    MarqueEnum marque = (MarqueEnum)Enum.Parse(typeof(MarqueEnum), res["marque"].ToString());
+                    string description = res["description"].ToString();
+                    int puissanceCv = Convert.ToInt32(res["puissance_cv"]);
+                    int puissanceW = Convert.ToInt32(res["puissance_w"]);
+                    int coutUtilisation = Convert.ToInt32(res["cout_utilisation"]);
+
+                    Materiel nouveau = new Materiel(numMateriel, new Categorie(nomCategorie), new Site(numSite), new TypeMateriel(numType), nomMateriel, lienPhoto, marque, description, puissanceCv, puissanceW, coutUtilisation);
 
                     LesMateriels.Add(nouveau);
                 }
+
                 return dataTable.Rows.Count;
             }
             catch (NpgsqlException e)
             {
-                Console.WriteLine("Problème de requête : " + e);
+                Console.WriteLine("Problème de requête : " + e.Message);
+                return 0;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Une erreur est survenue : " + e.Message);
                 return 0;
             }
         }
@@ -86,9 +106,7 @@ namespace DortanApp
             String sql = "SELECT num_activite, nom_activite FROM activite";
             try
             {
-                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter(sql, Connexion);
-                DataTable dataTable = new DataTable();
-                dataAdapter.Fill(dataTable);
+                DataTable dataTable = DataAccess.Instance.GetData(sql);
                 foreach (DataRow res in dataTable.Rows)
 
                 {

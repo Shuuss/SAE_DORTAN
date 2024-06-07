@@ -1,11 +1,15 @@
-﻿<Window x:Class="Dortan.Connexion"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Dortan"
-        mc:Ignorable="d"
-        Title="Connexion" Height="300" Width="400" Closing="Window_Closing">
+﻿<Window
+    x:Class="Dortan.Connexion"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Dortan"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Connexion"
+    Width="400"
+    Height="300"
+    Closing="Window_Closing"
+    mc:Ignorable="d">
     <StackPanel VerticalAlignment="Center">
         <Label
             x:Name="labConnexion"
@@ -18,6 +22,9 @@
         <TextBox x:Name="txtIdentifiant" Margin="60,5,60,0" />
         <Label Margin="60,5,60,0" Content="Mot de passe" />
         <PasswordBox x:Name="txtMotDePasse" Margin="60,5,60,0" />
-        <Button Margin="60,5,60,0" Content="Se connecter" Click="Button_Click" />
+        <Button
+            Margin="60,5,60,0"
+            Click="Button_Click"
+            Content="Se connecter" />
     </StackPanel>
 </Window>
