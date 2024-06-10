@@ -9,7 +9,7 @@
     Height="400"
     FontFamily="Arial"
     mc:Ignorable="d">
-    
+
     <Grid>
         <StackPanel x:Name="spDetails">
             <Label
@@ -81,7 +81,8 @@
                 Height="20"
                 Margin="0,26,0,0"
                 Click="btOK_Click"
-                Content="OK" />
+                Content="OK"
+                IsDefault="True" />
         </StackPanel>
         <!--<StackPanel x:Name="spInformation">
             <Label

@@ -31,7 +31,7 @@ namespace DortanApp
                 lbNomCategorie.Content = "Nom de la categorie : " + materiel.NomCategorie.ToString();
                 lbSite.Content = "Site : " + materiel.Site.Nom;
                 lbType.Content = "Type du materiel : " + materiel.TypeMateriel.Nom;
-                lbNom.Content = "Nom du materiel : " + materiel.Nom;
+                lbNom.Content = "Nom du materiel : " + materiel.Nom.ToString();
                 lbMarque.Content = "Nom de la marque : " + materiel.Marque;
                 lbDescription.Content = "Description : " + materiel.Description;
                 lbPuissanceCV.Content = "Puissance en CV : " + materiel.PuissanceCV;

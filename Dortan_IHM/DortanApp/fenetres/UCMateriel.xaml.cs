@@ -15,6 +15,8 @@ namespace DortanApp
         {
             InitializeComponent();
 
+            clSelection.Visibility = Visibility.Hidden;
+
             dbMateriel.Items.Filter = ContientMotClef;
         }
 
@@ -52,13 +54,21 @@ namespace DortanApp
 
         private void BtValider_Click(object sender, RoutedEventArgs e)
         {
+            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+
             if (materielsSelectionnes.Count > 0)
             {
-                foreach (Materiel materiel in materielsSelectionnes)
+                List<Materiel> materielsCopie = new List<Materiel>(materielsSelectionnes);
+
+                foreach (Materiel materiel in materielsCopie)
                 {
-                    MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
                     mainWindow.AjouterMaterielReservation(materiel);
+
+                    materielsSelectionnes.Remove(materiel);
                 }
+
+                TabControl tabControl = mainWindow.tcMain;
+                tabControl.SelectedIndex = 1;
             }
             else
             {
@@ -81,17 +91,32 @@ namespace DortanApp
 
         private void TxtType_TextChanged(object sender, TextChangedEventArgs e)
         {
-            CollectionViewSource.GetDefaultView(dbMateriel.ItemsSource).Refresh();
+            RafraichirVue();
         }
 
         private void TxtCategorie_TextChanged(object sender, TextChangedEventArgs e)
         {
-            CollectionViewSource.GetDefaultView(dbMateriel.ItemsSource).Refresh();
+            RafraichirVue();
         }
 
         private void TxtSite_TextChanged(object sender, TextChangedEventArgs e)
         {
+            RafraichirVue();
+        }
+
+        private void RafraichirVue()
+        {
             CollectionViewSource.GetDefaultView(dbMateriel.ItemsSource).Refresh();
+        }
+
+        public void ChangerVisibilte()
+        {
+            clSelection.Visibility = Visibility.Visible;
+            
+            foreach (var item in clFiltreEtBt.Children)
+            {
+                btValider.Visibility = Visibility.Visible;
+            }
         }
     }
 }

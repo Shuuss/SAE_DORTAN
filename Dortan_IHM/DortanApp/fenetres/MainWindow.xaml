@@ -5,23 +5,24 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:DortanApp"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    WindowStartupLocation="CenterScreen"
     Title="DORTAN"
-    Width="800"
-    MinWidth="800"
-    Height="600"
-    MinHeight="600"
+    Width="1200"
+    MinWidth="1200"
+    Height="660"
+    MinHeight="660"
     Closing="Window_Closing"
     mc:Ignorable="d">
 
     <Grid>
         <TabControl x:Name="tcMain">
-            <TabItem x:Name="tiReserver" Header="Réserver"/>
+            <TabItem x:Name="tiReserver" Header="Réserver" Background="LightCyan"/>
 
-            <TabItem x:Name="tiVisuReservation" Header="Réservations"/>
+            <TabItem x:Name="tiVisuReservation" Header="Réservations" Background="LightCyan"/>
 
-            <TabItem x:Name="tiCreer" Header="Création"/>
+            <TabItem x:Name="tiCreer" Header="Création" Background="LightCyan"/>
 
-            <TabItem x:Name="tiMateriel" Header="Materiel"/>
+            <TabItem x:Name="tiMateriel" Header="Materiels" Background="LightCyan"/>
         </TabControl>
     </Grid>
 </Window>

@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Media.Media3D;
 
 namespace DortanApp
 {
@@ -60,10 +61,26 @@ namespace DortanApp
 
                 coutTotal += coutUtilisationTotal * duree;
 
-                MessageBox.Show($"Le coût de la réservation est de : {coutTotal:F2} €.");
+                string detailsReservation = $"Durée de la réservation : {duree} heure(s)\n" +
+                                            $"Nombre de matériels réservés : {nombreMateriels}\n" +
+                                            $"Coût total de l'utilisation des matériels : {coutUtilisationTotal} €";
+
+                MessageBox.Show($"Le coût de la réservation est de : {coutTotal:F2} €. \nDétails : \n{detailsReservation}");
             }
-            else
-                MessageBox.Show("Aucune reservation n'a été sélectionnée");
+        }
+
+        private void BtSupReservation_Click(object sender, RoutedEventArgs e)
+        {
+            Reservation reservationSelectionne = dgReservations.SelectedItem as Reservation;
+
+            if (reservationSelectionne == null)
+            {
+                MessageBox.Show("Veuillez sélectionner une réservation");
+                return;
+            }
+
+            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow.SupReservation(reservationSelectionne);
         }
     }
 }

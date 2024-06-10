@@ -8,55 +8,25 @@ namespace Dortan
     /// </summary>
     public partial class Connexion : Window
     {
-        private string identifiant;
-        private string mdp;
 
         public Connexion()
         {
             InitializeComponent();
         }
 
-        public string Identifiant
-        {
-            get
-            {
-                return identifiant;
-            }
-
-            set
-            {
-                identifiant = value;
-            }
-        }
-
-        public string Mdp
-        {
-            get
-            {
-                return mdp;
-            }
-
-            set
-            {
-                mdp = value;
-            }
-        }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            this.Identifiant = txtIdentifiant.Text;
-            this.Mdp = txtMotDePasse.Password.ToString();
+            string identifiant = txtIdentifiant.Text;
+            string mdp = txtMotDePasse.Password.ToString();
 
             DataAccess dataAccess = DataAccess.Instance;
 
-            dataAccess.ConnexionBD(Identifiant, Mdp);
+            dataAccess.ConnexionBD(identifiant, mdp);
 
             if (dataAccess.Connexion?.State == System.Data.ConnectionState.Open)
             {
-                MessageBox.Show("Connexion réussie à la base de données!");
                 DialogResult = true;
             }
-
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

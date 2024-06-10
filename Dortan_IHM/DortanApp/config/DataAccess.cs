@@ -34,11 +34,12 @@ namespace DortanApp.config
 
         public void ConnexionBD(string id, string mdp)
         {
-            string strConnexion = $"Host=localhost;" +
-                                  $"Port=5432;" +
-                                  $"Database=dortan;" +
-                                  $"Username={id};" +
-                                  $"Password={mdp};";
+            string strConnexion = "Server=srv-peda-new;" +
+                                    "port=5433;" +
+                                    "Database=dortan;" +
+                                    "Search Path=dortan;" +
+                                    $"uid={id};" +
+                                    $"password={mdp};";
 
             try
             {
@@ -48,7 +49,7 @@ namespace DortanApp.config
             }
             catch (Exception)
             {
-                MessageBox.Show("ERROR : Impossinble de se connecter", "PAS NORMAL", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("ERROR : Impossinble de se connecter", "", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -58,9 +59,9 @@ namespace DortanApp.config
             {
                 Connexion.Close();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show("ERROR : Impossible de se déconnecter" + ex, "PAS NORMAL JE CROIS", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("ERROR : Impossible de se déconnecter", "", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

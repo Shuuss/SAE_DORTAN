@@ -1,4 +1,6 @@
-﻿namespace DortanApp
+﻿using System.Windows.Controls;
+
+namespace DortanApp
 {
     public enum MarqueEnum
     {

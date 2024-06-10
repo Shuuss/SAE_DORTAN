@@ -63,7 +63,7 @@ namespace DortanApp
 
             set
             {
-                if (value.Date < DateTime.Now)
+                if (value.Date < DateTime.Today)
                     throw new ArgumentOutOfRangeException("La date de réservation ne peut être déjà passée");
 
                 dateReservation = value;

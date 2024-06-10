@@ -4,19 +4,37 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DortanApp"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             mc:Ignorable="d" >
+    
     <StackPanel>
-        <Label
-            x:Name="labCreer"
-            HorizontalAlignment="Center"
-            Content="Créer Activité"
+        <Label 
+            x:Name="labCreer" 
             FontSize="36"
-            FontWeight="Bold" />
-        <Label Margin="60,50,0,0" Content="Nom" />
-        <TextBox x:Name="txtNomActivite" Margin="60,5,60,0" TextWrapping="Wrap" />
-        <Button Margin="100,50,100,0" Content="Valider" Click="Button_Click" />
+            FontWeight="Bold"
+            Margin="0,20,0,20"
+            HorizontalAlignment="Center" 
+            Content="Créer Activité"/>
+        
+        
+        <Label 
+            x:Name="lbCreerActivite"
+            Content="Nom" 
+            FontSize="18"
+            HorizontalAlignment="Left" 
+            Margin="40,20,0,0" />
+        <TextBox 
+            x:Name="txtNomActivite" 
+            Margin="40,0,40,0" 
+            TextWrapping="Wrap" />
 
-
+        <Button 
+            x:Name="btAjouterActivite"
+            Content="Valider" 
+            HorizontalAlignment="Right" 
+            Margin="0,20,40,0" 
+            Height="20"
+            Width="60" 
+            Click="Button_Click" />
+        
     </StackPanel>
 </UserControl>

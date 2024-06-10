@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:DortanApp"
              StartupUri="fenetres/MainWindow.xaml">
     <Application.Resources>
-         
+        
     </Application.Resources>
 </Application>

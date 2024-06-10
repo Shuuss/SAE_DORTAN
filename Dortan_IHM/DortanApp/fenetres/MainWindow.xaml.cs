@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows;
 using Dortan;
 using DortanApp.config;
@@ -63,6 +64,24 @@ namespace DortanApp
                     data.LesReservations.Add(nouvReservation);
                     data.CreateReservation(nouvReservation);
                 }
+            }
+        }
+
+        public void SupActivite(Activite activite)
+        {
+            if (activite != null)
+            {
+                data.LesActivites.Remove(activite);
+                data.DeleteActivite(activite);
+            }
+        }
+
+        public void SupReservation(Reservation reservation)
+        {
+            if (reservation != null)
+            {
+                data.LesReservations.Remove(reservation);
+                data.DeleteReservation(reservation);
             }
         }
 

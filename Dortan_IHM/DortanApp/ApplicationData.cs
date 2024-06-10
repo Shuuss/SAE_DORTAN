@@ -16,18 +16,18 @@ namespace DortanApp
 
         //private NpgsqlConnection connexion;
 
-        public static ApplicationData Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = new ApplicationData();
-                }
+        //public static ApplicationData Instance
+        //{
+        //    get
+        //    {
+        //        if (instance == null)
+        //        {
+        //            instance = new ApplicationData();
+        //        }
 
-                return instance;
-            }
-        }
+        //        return instance;
+        //    }
+        //}
 
         public ObservableCollection<Materiel> LesMateriels
         {
@@ -209,7 +209,6 @@ namespace DortanApp
             return maxId;
         }
 
-        // Méthode générique pour les opérations CRUD
         private int ExecuteNonQuery(string sql)
         {
             try
@@ -236,11 +235,11 @@ namespace DortanApp
         //    return ExecuteNonQuery(sql);
         //}
 
-        //public int DeleteActivite(Activite a)
-        //{
-        //    string sql = $"DELETE FROM activite WHERE num_activite = {a.Id}";
-        //    return ExecuteNonQuery(sql);
-        //}
+        public int DeleteActivite(Activite a)
+        {
+            string sql = $"DELETE FROM activite WHERE num_activite = {a.Id}";
+            return ExecuteNonQuery(sql);
+        }
 
         private int GetMaxReservationId()
         {
@@ -273,10 +272,10 @@ namespace DortanApp
         //    return ExecuteNonQuery(sql);
         //}
 
-        //public int DeleteReservation(Reservation r)
-        //{
-        //    string sql = $"DELETE FROM reservation WHERE num_reservation = {r.Id}";
-        //    return ExecuteNonQuery(sql);
-        //}
+        public int DeleteReservation(Reservation r)
+        {
+            string sql = $"DELETE FROM reservation WHERE num_reservation = {r.Id}";
+            return ExecuteNonQuery(sql);
+        }
     }
 }
