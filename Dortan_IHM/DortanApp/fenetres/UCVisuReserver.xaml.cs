@@ -52,16 +52,26 @@ namespace DortanApp
                 int nombreMateriels = reservationSelectionne.LesMateriels.Count;
                 int coutUtilisationTotal = 0;
 
+                List<string> list = new List<string>();
+
                 for (int i = 0; i < nombreMateriels; i++)
                 {
                     Materiel materiel = reservationSelectionne.LesMateriels[i];
                     int cout = materiel.CoutUtilisation;
                     coutUtilisationTotal += cout;
+
+                    if (materiel != null)
+                    {
+                        list.Add(materiel.Nom);
+                    }
                 }
 
                 coutTotal += coutUtilisationTotal * duree;
 
+                string nomsMateriels = string.Join(", ", list);
+
                 string detailsReservation = $"Durée de la réservation : {duree} heure(s)\n" +
+                                            $"Nom des matériels :  {nomsMateriels}\n" +
                                             $"Nombre de matériels réservés : {nombreMateriels}\n" +
                                             $"Coût total de l'utilisation des matériels : {coutUtilisationTotal} €";
 
