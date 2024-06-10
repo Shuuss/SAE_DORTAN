@@ -77,7 +77,7 @@ namespace Dortan {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/DortanApp;V1.0.0.0;component/fenetres/connexion.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/DortanApp;component/fenetres/connexion.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\fenetres\Connexion.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
