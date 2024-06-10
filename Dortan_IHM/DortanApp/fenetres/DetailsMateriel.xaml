@@ -84,42 +84,5 @@
                 Content="OK"
                 IsDefault="True" />
         </StackPanel>
-        <!--<StackPanel x:Name="spInformation">
-            <Label
-                Name="lbDonneeNomCategorie"
-                Margin="115,10,0,0"
-                Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" />
-            <Label
-                Name="lbDonneeSite"
-                Margin="30,10,0,0"
-                Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Panel.ZIndex="0" Width="150" />
-            <Label
-                Name="lbDonneeType"
-                Margin="97,10,0,0"
-                Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" />
-            <Label
-                Name="lbDonneeNomMateriel"
-                Margin="95,10,0,0"
-                Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" />
-            <Label
-                Name="lbDonneeNomMarque"
-                Margin="106,10,0,0"
-                Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" />
-            <Label
-                Name="lbDonneeDescritpion"
-                Margin="68,10,0,0"
-                Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" />
-            <Label
-                Name="lbDonneePuissanceCV"
-                Margin="100,10,0,0"
-                Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" />
-            <Label
-                Name="lbDonneePuissanceW"
-                Margin="95,10,0,0"
-                Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" />
-            <Label
-                Name="lbDonneeCoutUtilisation"
-                Margin="108,10,0,0"
-                Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" />-->
     </Grid>
 </Window>

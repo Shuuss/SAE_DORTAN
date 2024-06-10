@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "P:\\SAE 2.01 Conception et développement\\MOI\\Dortan_IHM\\DortanApp\\DortanApp.csproj": {}
+    "P:\\SAE 2.01 Conception et développement\\SAE_DORTAN\\Dortan_IHM\\DortanApp\\DortanApp.csproj": {}
   },
   "projects": {
-    "P:\\SAE 2.01 Conception et développement\\MOI\\Dortan_IHM\\DortanApp\\DortanApp.csproj": {
+    "P:\\SAE 2.01 Conception et développement\\SAE_DORTAN\\Dortan_IHM\\DortanApp\\DortanApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "P:\\SAE 2.01 Conception et développement\\MOI\\Dortan_IHM\\DortanApp\\DortanApp.csproj",
+        "projectUniqueName": "P:\\SAE 2.01 Conception et développement\\SAE_DORTAN\\Dortan_IHM\\DortanApp\\DortanApp.csproj",
         "projectName": "DortanApp",
-        "projectPath": "P:\\SAE 2.01 Conception et développement\\MOI\\Dortan_IHM\\DortanApp\\DortanApp.csproj",
+        "projectPath": "P:\\SAE 2.01 Conception et développement\\SAE_DORTAN\\Dortan_IHM\\DortanApp\\DortanApp.csproj",
         "packagesPath": "C:\\Users\\cetinkam\\.nuget\\packages\\",
-        "outputPath": "P:\\SAE 2.01 Conception et développement\\MOI\\Dortan_IHM\\DortanApp\\obj\\",
+        "outputPath": "P:\\SAE 2.01 Conception et développement\\SAE_DORTAN\\Dortan_IHM\\DortanApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
