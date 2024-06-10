@@ -10,71 +10,53 @@
     FontFamily="Arial"
     mc:Ignorable="d">
 
+    <Window.Resources>
+        <Style x:Key="LabelStyle" TargetType="Label">
+            <Setter Property="Margin" Value="0,10,0,0" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="FontFamily" Value="Arial" />
+        </Style>
+    </Window.Resources>
+
     <Grid>
         <StackPanel x:Name="spDetails">
             <Label
                 Name="lbNomCategorie"
-                Margin="0,10,0,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
                 Content="Nom de la categorie : "
-                FontFamily="Arial" />
+                Style="{StaticResource LabelStyle}" />
             <Label
                 Name="lbSite"
-                Margin="0,10,0,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
                 Content="Site : "
-                FontFamily="Arial" />
+                Style="{StaticResource LabelStyle}" />
             <Label
                 Name="lbType"
-                Margin="0,10,0,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
                 Content="Type du materiel : "
-                FontFamily="Arial" />
+                Style="{StaticResource LabelStyle}" />
             <Label
                 Name="lbNom"
-                Margin="0,10,0,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
                 Content="Nom du materiel : "
-                FontFamily="Arial" />
+                Style="{StaticResource LabelStyle}" />
             <Label
                 Name="lbMarque"
-                Margin="0,10,0,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
                 Content="Nom de la marque : "
-                FontFamily="Arial" />
+                Style="{StaticResource LabelStyle}" />
             <Label
                 Name="lbDescription"
-                Margin="0,10,0,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
                 Content="Description : "
-                FontFamily="Arial" />
+                Style="{StaticResource LabelStyle}" />
             <Label
                 Name="lbPuissanceCV"
-                Margin="0,10,0,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
                 Content="Puissance en CV : "
-                FontFamily="Arial" />
+                Style="{StaticResource LabelStyle}" />
             <Label
                 Name="lbPuissanceW"
-                Margin="0,10,0,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
                 Content="Puissance en W : "
-                FontFamily="Arial" />
+                Style="{StaticResource LabelStyle}" />
             <Label
                 Name="lbCoutUtilisation"
-                Margin="0,10,0,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
                 Content="Cout de l'utilisation : "
-                FontFamily="Arial" />
+                Style="{StaticResource LabelStyle}" />
             <Button
                 x:Name="btOK"
                 Width="100"

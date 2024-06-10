@@ -35,6 +35,9 @@ namespace DortanApp
                 mainWindow.CreationActivite(nomActivite);
 
                 txtNomActivite.Text = "";
+
+                TabControl tabControl = mainWindow.tcMain;
+                tabControl.SelectedIndex = 0;
             }
             else if (nomActivite.Length < 10)
                 MessageBox.Show("Ajouter plus de détails au nom de l'activté");

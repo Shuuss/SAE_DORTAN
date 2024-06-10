@@ -83,7 +83,6 @@ namespace DortanApp.config
 
         public int SetData(string setSQL)
         {
-
             try
             {
                 NpgsqlCommand sqlCommand = new NpgsqlCommand(setSQL, Connexion);

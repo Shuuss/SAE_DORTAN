@@ -71,9 +71,7 @@ namespace DortanApp
 
         private void BtSupReservation_Click(object sender, RoutedEventArgs e)
         {
-            Reservation reservationSelectionne = dgReservations.SelectedItem as Reservation;
-
-            if (reservationSelectionne == null)
+            if (dgReservations.SelectedItem is not Reservation reservationSelectionne)
             {
                 MessageBox.Show("Veuillez sélectionner une réservation");
                 return;

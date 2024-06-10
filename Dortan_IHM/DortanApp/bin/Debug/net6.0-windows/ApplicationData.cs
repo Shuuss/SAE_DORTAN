@@ -8,26 +8,9 @@ namespace DortanApp
 {
     public class ApplicationData
     {
-        private static ApplicationData instance;
-
         private ObservableCollection<Materiel> lesMateriels;
         private ObservableCollection<Activite> lesActivites;
         private ObservableCollection<Reservation> lesReservations;
-
-        //private NpgsqlConnection connexion;
-
-        //public static ApplicationData Instance
-        //{
-        //    get
-        //    {
-        //        if (instance == null)
-        //        {
-        //            instance = new ApplicationData();
-        //        }
-
-        //        return instance;
-        //    }
-        //}
 
         public ObservableCollection<Materiel> LesMateriels
         {
@@ -55,20 +38,6 @@ namespace DortanApp
             }
         }
 
-        //public NpgsqlConnection Connexion
-        //{
-        //    get
-        //    {
-        //        return connexion;
-        //    }
-
-        //    set
-        //    {
-        //        connexion = value;
-
-        //    }
-        //}
-
         public ObservableCollection<Reservation> LesReservations
         {
             get
@@ -94,15 +63,15 @@ namespace DortanApp
             GetMaxActiviteId();
         }
 
-        private DataTable ExecuteQuery(string sql)
+        private DataTable ExecuterRequete(string sql)
         {
             try
             {
                 return DataAccess.Instance.GetData(sql);
             }
-            catch (NpgsqlException e)
+            catch (NpgsqlException)
             {
-                MessageBox.Show("Problème de requête : " + e.Message, "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Problème de requête", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
                 return new DataTable();
             }
         }
@@ -112,7 +81,7 @@ namespace DortanApp
             String sql = "SELECT num_reservation, num_activite, nom_activite, date_reservation, duree_reservation FROM reservation";
             try
             {
-                DataTable dataTable = ExecuteQuery(sql);
+                DataTable dataTable = ExecuterRequete(sql);
                 foreach (DataRow res in dataTable.Rows)
                 {
                     int numReservation = Convert.ToInt32(res["num_reservation"]);
@@ -128,9 +97,9 @@ namespace DortanApp
 
                 return dataTable.Rows.Count;
             }
-            catch (NpgsqlException e)
+            catch (NpgsqlException)
             {
-                Console.WriteLine("Problème de requête : " + e.Message);
+                MessageBox.Show("Problème de requête : ReadReservations");
                 return 0;
             }
         }
@@ -140,7 +109,7 @@ namespace DortanApp
             String sql = "SELECT num_materiel, nom_categorie, num_site, nom_site, num_type, nom_type, nom_materiel, lien_photo, marque, description, puissance_cv, puissance_w, cout_utilisation FROM materiel";
             try
             {
-                DataTable dataTable = ExecuteQuery(sql);
+                DataTable dataTable = ExecuterRequete(sql);
                 foreach (DataRow res in dataTable.Rows)
                 {
                     int numMateriel = Convert.ToInt32(res["num_materiel"]);
@@ -166,7 +135,7 @@ namespace DortanApp
             }
             catch (NpgsqlException e)
             {
-                Console.WriteLine("Problème de requête : " + e.Message);
+                MessageBox.Show("Problème de requête : ReadMateriels");
                 return 0;
             }
         }
@@ -176,7 +145,7 @@ namespace DortanApp
             String sql = "SELECT num_activite, nom_activite FROM activite";
             try
             {
-                DataTable dataTable = ExecuteQuery(sql);
+                DataTable dataTable = ExecuterRequete(sql);
                 foreach (DataRow res in dataTable.Rows)
                 {
                     Activite nouveau = new Activite(int.Parse(res["num_activite"].ToString()),
@@ -189,7 +158,7 @@ namespace DortanApp
             }
             catch (NpgsqlException e)
             {
-                Console.WriteLine("Problème de requête : " + e);
+                MessageBox.Show("Problème de requête : ReadActivites");
                 return 0;
             }
         }
@@ -197,7 +166,7 @@ namespace DortanApp
         private int GetMaxActiviteId()
         {
             string sql = "SELECT MAX(num_activite) as nb_max_id FROM activite";
-            DataTable dataTable = ExecuteQuery(sql);
+            DataTable dataTable = ExecuterRequete(sql);
 
             int maxId = 0;
 
@@ -215,9 +184,9 @@ namespace DortanApp
             {
                 return DataAccess.Instance.SetData(sql);
             }
-            catch (NpgsqlException e)
+            catch (NpgsqlException)
             {
-                MessageBox.Show("Problème de requête : " + e.Message, "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Problème de requête : SetData");
                 return 0;
             }
         }
@@ -229,12 +198,6 @@ namespace DortanApp
             return ExecuteNonQuery(sql);
         }
 
-        //public int UpdateActivite(Activite a)
-        //{
-        //    string sql = $"UPDATE activite SET nom_activite = '{a.Nom}' WHERE num_activite = {a.Id}";
-        //    return ExecuteNonQuery(sql);
-        //}
-
         public int DeleteActivite(Activite a)
         {
             string sql = $"DELETE FROM activite WHERE num_activite = {a.Id}";
@@ -244,7 +207,7 @@ namespace DortanApp
         private int GetMaxReservationId()
         {
             string sql = "SELECT MAX(num_reservation) as max_reservation_id FROM reservation";
-            DataTable dataTable = ExecuteQuery(sql);
+            DataTable dataTable = ExecuterRequete(sql);
 
             int maxId = 0;
 
@@ -263,14 +226,6 @@ namespace DortanApp
                          $"VALUES ({newId}, {r.Activite.Id}, '{r.Activite.Nom}', '{r.DateReservation:yyyy-MM-dd}', {r.DureeReservation})";
             return ExecuteNonQuery(sql);
         }
-
-        //public int UpdateReservation(Reservation r)
-        //{
-        //    string sql = $"UPDATE reservation SET num_activite = {r.Activite.Id}, nom_activite = '{r.Activite.Nom}', " +
-        //                 $"date_reservation = '{r.DateReservation:yyyy-MM-dd}', duree_reservation = {r.DureeReservation} " +
-        //                 $"WHERE num_reservation = {r.Id}";
-        //    return ExecuteNonQuery(sql);
-        //}
 
         public int DeleteReservation(Reservation r)
         {
