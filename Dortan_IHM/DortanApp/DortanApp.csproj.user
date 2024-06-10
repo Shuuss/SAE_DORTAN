@@ -17,6 +17,9 @@
     <Compile Update="fenetres\UCMateriel.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="fenetres\Recap.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="fenetres\DetailsMateriel.xaml">
@@ -38,6 +41,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="fenetres\UCMateriel.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="fenetres\Recap.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
