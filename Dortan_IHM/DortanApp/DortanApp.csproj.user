@@ -25,12 +25,6 @@
     <Page Update="fenetres\Connexion.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="fenetres\Creation.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="fenetres\Materiel.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="fenetres\MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>

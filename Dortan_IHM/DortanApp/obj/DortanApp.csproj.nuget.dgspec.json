@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "P:\\SAE 2.01 Conception et développement\\SAE_DORTAN\\Dortan_IHM\\DortanApp\\DortanApp.csproj": {}
+    "C:\\Users\\melih\\Desktop\\Travaux à faire\\SAE 2.01 - REALISATION\\Dortan_IHM\\DortanApp\\DortanApp.csproj": {}
   },
   "projects": {
-    "P:\\SAE 2.01 Conception et développement\\SAE_DORTAN\\Dortan_IHM\\DortanApp\\DortanApp.csproj": {
+    "C:\\Users\\melih\\Desktop\\Travaux à faire\\SAE 2.01 - REALISATION\\Dortan_IHM\\DortanApp\\DortanApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "P:\\SAE 2.01 Conception et développement\\SAE_DORTAN\\Dortan_IHM\\DortanApp\\DortanApp.csproj",
+        "projectUniqueName": "C:\\Users\\melih\\Desktop\\Travaux à faire\\SAE 2.01 - REALISATION\\Dortan_IHM\\DortanApp\\DortanApp.csproj",
         "projectName": "DortanApp",
-        "projectPath": "P:\\SAE 2.01 Conception et développement\\SAE_DORTAN\\Dortan_IHM\\DortanApp\\DortanApp.csproj",
-        "packagesPath": "C:\\Users\\cetinkam\\.nuget\\packages\\",
-        "outputPath": "P:\\SAE 2.01 Conception et développement\\SAE_DORTAN\\Dortan_IHM\\DortanApp\\obj\\",
+        "projectPath": "C:\\Users\\melih\\Desktop\\Travaux à faire\\SAE 2.01 - REALISATION\\Dortan_IHM\\DortanApp\\DortanApp.csproj",
+        "packagesPath": "C:\\Users\\melih\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\melih\\Desktop\\Travaux à faire\\SAE 2.01 - REALISATION\\Dortan_IHM\\DortanApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\cetinkam\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\melih\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -69,7 +69,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.106\\RuntimeIdentifierGraph.json"
         }
       }
     }

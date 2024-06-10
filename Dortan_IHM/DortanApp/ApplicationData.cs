@@ -8,11 +8,26 @@ namespace DortanApp
 {
     public class ApplicationData
     {
+        private static ApplicationData instance;
+
         private ObservableCollection<Materiel> lesMateriels;
         private ObservableCollection<Activite> lesActivites;
         private ObservableCollection<Reservation> lesReservations;
 
-        private NpgsqlConnection connexion;
+        //private NpgsqlConnection connexion;
+
+        public static ApplicationData Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new ApplicationData();
+                }
+
+                return instance;
+            }
+        }
 
         public ObservableCollection<Materiel> LesMateriels
         {
@@ -40,19 +55,19 @@ namespace DortanApp
             }
         }
 
-        public NpgsqlConnection Connexion
-        {
-            get
-            {
-                return connexion;
-            }
+        //public NpgsqlConnection Connexion
+        //{
+        //    get
+        //    {
+        //        return connexion;
+        //    }
 
-            set
-            {
-                connexion = value;
+        //    set
+        //    {
+        //        connexion = value;
 
-            }
-        }
+        //    }
+        //}
 
         public ObservableCollection<Reservation> LesReservations
         {
@@ -76,22 +91,37 @@ namespace DortanApp
             ReadMateriels();
             ReadActivite();
             ReadReservations();
+            GetMaxActiviteId();
+        }
+
+        private DataTable ExecuteQuery(string sql)
+        {
+            try
+            {
+                return DataAccess.Instance.GetData(sql);
+            }
+            catch (NpgsqlException e)
+            {
+                MessageBox.Show("Problème de requête : " + e.Message, "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
+                return new DataTable();
+            }
         }
 
         private int ReadReservations()
         {
-            String sql = "SELECT num_reservation, num_activite, date_reservation, duree_reservation FROM reservation";
+            String sql = "SELECT num_reservation, num_activite, nom_activite, date_reservation, duree_reservation FROM reservation";
             try
             {
-                DataTable dataTable = DataAccess.Instance.GetData(sql);
+                DataTable dataTable = ExecuteQuery(sql);
                 foreach (DataRow res in dataTable.Rows)
                 {
                     int numReservation = Convert.ToInt32(res["num_reservation"]);
                     int numActivite = Convert.ToInt32(res["num_activite"]);
-                    DateTime date = DateTime.Parse(res["date_reservation"].ToString());
+                    string nomActivite = res["nom_activite"].ToString();
+                    DateTime date = Convert.ToDateTime(res["date_reservation"]);
                     int duree = Convert.ToInt32(res["duree_reservation"]);
 
-                    Reservation nouveau = new Reservation(numReservation, new Activite(numActivite), date, duree);
+                    Reservation nouveau = new Reservation(numReservation, new Activite(numActivite, nomActivite), date, duree); ;
 
                     LesReservations.Add(nouveau);
                 }
@@ -107,16 +137,18 @@ namespace DortanApp
 
         public int ReadMateriels()
         {
-            String sql = "SELECT num_materiel, nom_categorie, num_site, num_type, nom_materiel, lien_photo, marque, description, puissance_cv, puissance_w, cout_utilisation FROM materiel";
+            String sql = "SELECT num_materiel, nom_categorie, num_site, nom_site, num_type, nom_type, nom_materiel, lien_photo, marque, description, puissance_cv, puissance_w, cout_utilisation FROM materiel";
             try
             {
-                DataTable dataTable = DataAccess.Instance.GetData(sql);
+                DataTable dataTable = ExecuteQuery(sql);
                 foreach (DataRow res in dataTable.Rows)
                 {
                     int numMateriel = Convert.ToInt32(res["num_materiel"]);
                     string nomCategorie = res["nom_categorie"].ToString();
                     int numSite = Convert.ToInt32(res["num_site"]);
+                    string nomSite = res["nom_site"].ToString();
                     int numType = Convert.ToInt32(res["num_type"]);
+                    string nomType = res["nom_type"].ToString();
                     string nomMateriel = res["nom_materiel"].ToString();
                     string lienPhoto = res["lien_photo"].ToString();
                     MarqueEnum marque = (MarqueEnum)Enum.Parse(typeof(MarqueEnum), res["marque"].ToString());
@@ -125,7 +157,7 @@ namespace DortanApp
                     int puissanceW = Convert.ToInt32(res["puissance_w"]);
                     int coutUtilisation = Convert.ToInt32(res["cout_utilisation"]);
 
-                    Materiel nouveau = new Materiel(numMateriel, new Categorie(nomCategorie), new Site(numSite), new TypeMateriel(numType), nomMateriel, lienPhoto, marque, description, puissanceCv, puissanceW, coutUtilisation);
+                    Materiel nouveau = new Materiel(numMateriel, new Categorie(nomCategorie), new Site(numSite, nomSite), new TypeMateriel(numType, nomType), nomMateriel, lienPhoto, marque, description, puissanceCv, puissanceW, coutUtilisation);
 
                     LesMateriels.Add(nouveau);
                 }
@@ -144,9 +176,8 @@ namespace DortanApp
             String sql = "SELECT num_activite, nom_activite FROM activite";
             try
             {
-                DataTable dataTable = DataAccess.Instance.GetData(sql);
+                DataTable dataTable = ExecuteQuery(sql);
                 foreach (DataRow res in dataTable.Rows)
-
                 {
                     Activite nouveau = new Activite(int.Parse(res["num_activite"].ToString()),
                     res["nom_activite"].ToString());
@@ -163,57 +194,89 @@ namespace DortanApp
             }
         }
 
-        private int MethodeGenerique(string sql)
+        private int GetMaxActiviteId()
+        {
+            string sql = "SELECT MAX(num_activite) as nb_max_id FROM activite";
+            DataTable dataTable = ExecuteQuery(sql);
+
+            int maxId = 0;
+
+            if (dataTable.Rows.Count > 0 && dataTable.Rows[0]["nb_max_id"] != DBNull.Value)
+            {
+                maxId = Convert.ToInt32(dataTable.Rows[0]["nb_max_id"]);
+            }
+
+            return maxId;
+        }
+
+        // Méthode générique pour les opérations CRUD
+        private int ExecuteNonQuery(string sql)
         {
             try
             {
-                NpgsqlCommand cmd = new NpgsqlCommand(sql, Connexion);
-                int nb = cmd.ExecuteNonQuery();
-                return nb; // nb permet de connaître le nb de lignes affectées par un insert, update, delete
-
+                return DataAccess.Instance.SetData(sql);
             }
-            catch (Exception sqlE)
+            catch (NpgsqlException e)
             {
-                MessageBox.Show("Problème de requête : " + sqlE.Message, "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Problème de requête : " + e.Message, "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
                 return 0;
             }
         }
 
-        public int CreateMateriel(Materiel m)
-        {
-            string sql = $"INSERT INTO Materiel (num_materiel, nom_categorie, num_site, num_type, nom_materiel, lien_photo, marque, description, puissance_cv, puissance_w, cout_utilisation) VALUES ({m.Id}, '{m.NomCategorie}', {m.Site}, {m.Type}, '{m.Nom}', '{m.LienPhoto}', '{m.Marque}', '{m.Description}', {m.PuissanceCV}, {m.PuissanceW}, {m.CoutUtilisation})";
-            return MethodeGenerique(sql);
-        }
-
-        public int UpdateMateriel(Materiel m)
-        {
-            string sql = $"UPDATE Materiel SET nom_categorie = '{m.NomCategorie}', num_site = {m.Site}, num_type = {m.Type}, nom_materiel = '{m.Nom}', lien_photo = '{m.LienPhoto}', marque = '{m.Marque}', description = '{m.Description}', puissance_cv = {m.PuissanceCV}, puissance_w = {m.PuissanceW}, cout_utilisation = {m.CoutUtilisation} WHERE num_materiel = {m.Id}";
-            return MethodeGenerique(sql);
-        }
-
-        public int DeleteMateriel(Materiel m)
-        {
-            string sql = $"DELETE FROM Materiel WHERE num_materiel = {m.Id}";
-            return MethodeGenerique(sql);
-        }
-
-
         public int CreateActivite(Activite a)
         {
-            string sql = $"INSERT INTO Activite (num_activite, nom_activite) VALUES ({a.Id})";
-            return MethodeGenerique(sql);
+            int newId = GetMaxActiviteId() + 1;
+            string sql = $"INSERT INTO activite (num_activite, nom_activite) VALUES ({newId}, '{a.Nom}')";
+            return ExecuteNonQuery(sql);
         }
 
-        public int UpdateActivite(Activite a)
+        //public int UpdateActivite(Activite a)
+        //{
+        //    string sql = $"UPDATE activite SET nom_activite = '{a.Nom}' WHERE num_activite = {a.Id}";
+        //    return ExecuteNonQuery(sql);
+        //}
+
+        //public int DeleteActivite(Activite a)
+        //{
+        //    string sql = $"DELETE FROM activite WHERE num_activite = {a.Id}";
+        //    return ExecuteNonQuery(sql);
+        //}
+
+        private int GetMaxReservationId()
         {
-            string sql = $"UPDATE Activite SET nom_activite = '{a.Nom}' WHERE num_activite = {a.Id}";
-            return MethodeGenerique(sql);
+            string sql = "SELECT MAX(num_reservation) as max_reservation_id FROM reservation";
+            DataTable dataTable = ExecuteQuery(sql);
+
+            int maxId = 0;
+
+            if (dataTable.Rows.Count > 0 && dataTable.Rows[0]["max_reservation_id"] != DBNull.Value)
+            {
+                maxId = Convert.ToInt32(dataTable.Rows[0]["max_reservation_id"]);
+            }
+
+            return maxId;
         }
 
-        public int DeleteActivite(Activite a)
+        public int CreateReservation(Reservation r)
         {
-            string sql = $"DELETE FROM Activite WHERE num_activite = {a.Id}";
-            return MethodeGenerique(sql);
+            int newId = GetMaxReservationId() + 1;
+            string sql = $"INSERT INTO reservation (num_reservation, num_activite, nom_activite, date_reservation, duree_reservation) " +
+                         $"VALUES ({newId}, {r.Activite.Id}, '{r.Activite.Nom}', '{r.DateReservation:yyyy-MM-dd}', {r.DureeReservation})";
+            return ExecuteNonQuery(sql);
         }
+
+        //public int UpdateReservation(Reservation r)
+        //{
+        //    string sql = $"UPDATE reservation SET num_activite = {r.Activite.Id}, nom_activite = '{r.Activite.Nom}', " +
+        //                 $"date_reservation = '{r.DateReservation:yyyy-MM-dd}', duree_reservation = {r.DureeReservation} " +
+        //                 $"WHERE num_reservation = {r.Id}";
+        //    return ExecuteNonQuery(sql);
+        //}
+
+        //public int DeleteReservation(Reservation r)
+        //{
+        //    string sql = $"DELETE FROM reservation WHERE num_reservation = {r.Id}";
+        //    return ExecuteNonQuery(sql);
+        //}
     }
 }

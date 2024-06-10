@@ -1,18 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Dortan;
-using DortanApp;
 using DortanApp.config;
 
 namespace DortanApp
@@ -22,25 +10,76 @@ namespace DortanApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        ApplicationData data;
+        bool connecte;
+        Reservation nouvReservation;
+
         public MainWindow()
         {
+            InitializeComponent();
+
             Connexion connexion = new Connexion();
             connexion.ShowDialog();
             if (connexion.DialogResult == true)
             {
-                InitializeComponent();
-                DataContext = new ApplicationData();
+                data = new ApplicationData();
+                connecte = true;
+                DataContext = data;
                 tiReserver.Content = new UCReservation();
                 tiCreer.Content = new UCCreation();
                 tiVisuReservation.Content = new UCVisuReserver();
                 tiMateriel.Content = new UCMateriel();
             }
-            
+            else
+            {
+                Application.Current.Shutdown();
+            }
+        }
+
+        public void CreationActivite(string nom)
+        {
+            if (nom != null)
+            {
+                Activite nouvActivite = new Activite(nom);
+
+                if (nouvActivite != null)
+                {
+                    data.LesActivites.Add(nouvActivite);
+                    data.CreateActivite(nouvActivite);
+
+                    MessageBox.Show("L'activité a été enregistré");
+                }
+            }
+        }
+
+        public void CreationReservation(Reservation reservation)
+        {
+            if (reservation != null)
+            {
+                nouvReservation = reservation;
+
+                if (nouvReservation != null)
+                {
+                    data.LesReservations.Add(nouvReservation);
+                    data.CreateReservation(nouvReservation);
+                }
+            }
+        }
+
+        public void AjouterMaterielReservation(Materiel materiel)
+        {
+            if (materiel != null)
+            {
+                nouvReservation.AjouterMateriel(materiel);
+            }
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            DataAccess.Instance.DeconnexionBD();
+            if (connecte)
+            {
+                DataAccess.Instance.DeconnexionBD();
+            }
         }
     }
 }

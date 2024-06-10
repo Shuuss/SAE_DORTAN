@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 
 namespace DortanApp
 {
@@ -8,44 +9,89 @@ namespace DortanApp
     /// </summary>
     public partial class UCMateriel : UserControl
     {
+        private List<Materiel> materielsSelectionnes = new List<Materiel>();
+
         public UCMateriel()
         {
             InitializeComponent();
+
+            dbMateriel.Items.Filter = ContientMotClef;
         }
 
-        private void btValider_Click(object sender, RoutedEventArgs e)
+        private void MaterielSelectionne(object sender, RoutedEventArgs e)
         {
-            /*if (dbMateriel.SelectedItem != null)
+            Materiel materiel = ((CheckBox)sender).DataContext as Materiel;
+            if (materiel != null)
             {
-                DortanApp.Materiel materielSelectionne = (DortanApp.Materiel)dbMateriel.SelectedItem;
-                DetailsMateriel details = new DetailsMateriel();
-                details.AfficherDetails(materielSelectionne);
-                details.ShowDialog();
-
-                if (details.DialogResult == false)
+                if (((CheckBox)sender).IsChecked == true)
                 {
-                    details.Close();
+                    materielsSelectionnes.Add(materiel);
+                }
+                else
+                {
+                    materielsSelectionnes.Remove(materiel);
                 }
             }
-            else
-                MessageBox.Show(this, "Veuillez selectionner un materiels");*/
-
         }
 
-        private void dbMateriel_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        private void DbMateriel_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (dbMateriel.SelectedItem != null)
             {
-                DortanApp.Materiel materielSelectionne = (DortanApp.Materiel)dbMateriel.SelectedItem;
-                DetailsMateriel details = new DetailsMateriel();
-                details.AfficherDetails(materielSelectionne);
-                details.ShowDialog();
+                Materiel materielSelectionne = (Materiel)dbMateriel.SelectedItem;
+                AfficherDetailsMateriel(materielSelectionne);
+            }
+        }
 
-                if (details.DialogResult == false)
+        private void AfficherDetailsMateriel(Materiel materiel)
+        {
+            DetailsMateriel details = new DetailsMateriel();
+            details.AfficherDetails(materiel);
+            details.ShowDialog();
+        }
+
+        private void BtValider_Click(object sender, RoutedEventArgs e)
+        {
+            if (materielsSelectionnes.Count > 0)
+            {
+                foreach (Materiel materiel in materielsSelectionnes)
                 {
-                    details.Close();
+                    MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+                    mainWindow.AjouterMaterielReservation(materiel);
                 }
             }
+            else
+            {
+                MessageBox.Show("Aucun matériel n'a été sélectionné");
+            }
+        }
+
+        private bool ContientMotClef(object obj)
+        {
+            Materiel materiel = obj as Materiel;
+            if (materiel == null)
+                return false;
+
+            bool typeFiltre = string.IsNullOrEmpty(txtType.Text) || materiel.TypeMateriel.Nom.StartsWith(txtType.Text, StringComparison.OrdinalIgnoreCase);
+            bool categorieFiltre = string.IsNullOrEmpty(txtCategorie.Text) || materiel.NomCategorie.Nom.StartsWith(txtCategorie.Text, StringComparison.OrdinalIgnoreCase);
+            bool siteFiltre = string.IsNullOrEmpty(txtSite.Text) || materiel.Site.Nom.StartsWith(txtSite.Text, StringComparison.OrdinalIgnoreCase);
+
+            return typeFiltre && categorieFiltre && siteFiltre;
+        }
+
+        private void TxtType_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CollectionViewSource.GetDefaultView(dbMateriel.ItemsSource).Refresh();
+        }
+
+        private void TxtCategorie_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CollectionViewSource.GetDefaultView(dbMateriel.ItemsSource).Refresh();
+        }
+
+        private void TxtSite_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CollectionViewSource.GetDefaultView(dbMateriel.ItemsSource).Refresh();
         }
     }
 }

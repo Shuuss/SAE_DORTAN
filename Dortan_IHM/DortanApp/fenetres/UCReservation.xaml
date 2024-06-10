@@ -5,24 +5,25 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:DortanApp"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    d:DesignHeight="450"
-    d:DesignWidth="800"
     mc:Ignorable="d">
+    
     <StackPanel>
         <Label
             x:Name="labActivite"
-            Margin="60,13,60,0"
             Content="Activité"
-            FontSize="20" />
-        <DataGrid
-            Width="290"
-            Height="200"
-            ItemsSource="{Binding LesActivites}" />
+            FontSize="20" HorizontalAlignment="Center" />
+        
+        <DataGrid x:Name="dgActivites"
+          AutoGenerateColumns="False"
+          ItemsSource="{Binding LesActivites}" Margin="20,0,20,0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Nom}" Header="Nom de l'activité" />
+            </DataGrid.Columns>
+        </DataGrid>
 
         <Button
             x:Name="btCreationActivite"
-            Margin="249,20,60,0"
-            Content="créer activité" />
+            Content="créer activité" Width="150" HorizontalAlignment="Right" Margin="0,20,40,0" Click="BtCreationActivite_Click" />
         <Label
             x:Name="labDate"
             Margin="60,0,60,0"
@@ -40,7 +41,7 @@
         <Button
             x:Name="btReserver"
             Margin="150,30,150,0"
-            Content="Réserver" />
+            Content="Réserver" Click="BtReserver_Click" />
 
     </StackPanel>
 </UserControl>

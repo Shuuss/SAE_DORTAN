@@ -16,21 +16,21 @@
         private int id;
         private Categorie nomCategorie;
         private Site site;
-        private TypeMateriel type;
+        private TypeMateriel typeMateriel;
         private string nom;
-        private string lienPhoto;
+        private string lienPhoto;   
         private MarqueEnum marque;
         private string description;
         private int puissanceCV;
         private int? puissanceW;
         private int coutUtilisation;
 
-        public Materiel(int id, Categorie nomCategorie, Site site, TypeMateriel type, string nom, string lienPhoto, MarqueEnum marque, string description, int puissanceCV, int? puissanceW, int coutUtilisation)
+        public Materiel(int id, Categorie nomCategorie, Site site, TypeMateriel typeMateriel, string nom, string lienPhoto, MarqueEnum marque, string description, int puissanceCV, int? puissanceW, int coutUtilisation)
         {
             this.Id = id;
             this.NomCategorie = nomCategorie;
             this.Site = site;
-            this.Type = type;
+            this.TypeMateriel = typeMateriel;
             this.Nom = nom;
             this.LienPhoto = lienPhoto;
             this.Marque = marque;
@@ -79,16 +79,16 @@
             }
         }
 
-        public TypeMateriel Type
+        public TypeMateriel TypeMateriel
         {
             get
             {
-                return type;
+                return typeMateriel;
             }
 
             set
             {
-                type = value;
+                typeMateriel = value;
             }
         }
 

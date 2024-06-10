@@ -23,5 +23,10 @@ namespace DortanApp
                 this.nom = value;
             }
         }
+
+        public override string? ToString()
+        {
+            return Nom;
+        }
     }
 }

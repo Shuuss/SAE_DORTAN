@@ -4,55 +4,57 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DortanApp"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             mc:Ignorable="d" >
+
+    <UserControl.Resources>
+        <Style x:Key="LabelStyle" TargetType="Label">
+            <Setter Property="Margin" Value="55,10,0,0"/>
+        </Style>
+        <Style x:Key="TextBoxStyle" TargetType="TextBox">
+            <Setter Property="Margin" Value="55,0,50,0"/>
+        </Style>
+    </UserControl.Resources>
+
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition x:Name="gauche" Width="2*" />
-            <ColumnDefinition x:Name="droite" Width="3*" />
+            <ColumnDefinition Width="1.2*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="0.8*" />
         </Grid.ColumnDefinitions>
-        <DataGrid x:Name="dbMateriel" ItemsSource="{Binding LesMateriels}" Grid.Column="1" SelectionChanged="dbMateriel_SelectionChanged">
+
+        <DataGrid x:Name="dbMateriel" AutoGenerateColumns="False" ItemsSource="{Binding LesMateriels}" Grid.Column="1" SelectionChanged="DbMateriel_SelectionChanged">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Nom Matériel" />
-                <DataGridTextColumn Header="Type produit" />
-                <DataGridTextColumn Header="Catégorie" />
-                <DataGridTextColumn Width="140" Header="Site" />
+                <DataGridTextColumn Header="Nom Matériel" Binding="{Binding Nom}" />
+                <DataGridTextColumn Header="Type produit" Binding="{Binding TypeMateriel.Nom}" />
+                <DataGridTextColumn Header="Catégorie" Binding="{Binding NomCategorie}" />
+                <DataGridTextColumn Header="Site" Binding="{Binding Site.Nom}" />
             </DataGrid.Columns>
         </DataGrid>
-        <StackPanel Grid.Column="0">
-            <Label
-                HorizontalAlignment="Center"
-                Content="Réservation"
-                FontSize="24"
-                FontWeight="Bold" />
-            <Label Margin="20,50,0,0" Content="Type" />
-            <ComboBox
-                Width="150"
-                Height="20"
-                Margin="20,10,0,0"
-                HorizontalAlignment="Left" />
-            <Label Margin="20,20,0,0" Content="Catégorie" />
-            <ComboBox
-                Width="150"
-                Height="20"
-                Margin="20,10,0,0"
-                HorizontalAlignment="Left" />
-            <Label Margin="20,20,0,0" Content="Site" />
-            <ComboBox
-                Width="150"
-                Height="20"
-                Margin="20,10,0,0"
-                HorizontalAlignment="Left" />
-            <Button
-                x:Name="btValider"
-                Width="80"
-                Height="40"
-                Margin="0,50,0,0"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Bottom"
-                Content="Valider" Click="btValider_Click" />
+
+        <StackPanel Grid.Column="0" VerticalAlignment="Center">
+            <Label Content="Réservation" FontSize="36" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,20,0,20" />
+
+            <Label Content="Type" Style="{StaticResource LabelStyle}" />
+            <TextBox x:Name="txtType" Style="{StaticResource TextBoxStyle}" TextChanged="TxtType_TextChanged"/>
+
+            <Label Content="Catégorie" Style="{StaticResource LabelStyle}" />
+            <TextBox x:Name="txtCategorie" Style="{StaticResource TextBoxStyle}" TextChanged="TxtCategorie_TextChanged" />
+
+            <Label Content="Site" Style="{StaticResource LabelStyle}" />
+            <TextBox x:Name="txtSite" Style="{StaticResource TextBoxStyle}" TextChanged="TxtSite_TextChanged" />
+
+            <Button x:Name="btValider" Width="80" Height="40" Margin="0,30,0,0" Content="Valider" HorizontalAlignment="Center" VerticalAlignment="Top" Click="BtValider_Click" />
         </StackPanel>
 
-
+        <StackPanel Grid.Column="3" Margin="0,22,0,0">
+            <ItemsControl ItemsSource="{Binding LesMateriels}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <CheckBox Content="{Binding Nom}" Checked="MaterielSelectionne" Unchecked="MaterielSelectionne" Margin="0,4,0,0"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+        
     </Grid>
 </UserControl>

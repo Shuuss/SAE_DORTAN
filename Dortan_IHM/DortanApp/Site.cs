@@ -23,6 +23,12 @@ namespace DortanApp
             this.Horaire = horaire;
         }
 
+        public Site(int id, string nom)
+        {
+            this.Id = id;
+            this.Nom = nom;
+        }
+
         public int Id
         {
             get

@@ -14,8 +14,8 @@
             FontSize="36"
             FontWeight="Bold" />
         <Label Margin="60,50,0,0" Content="Nom" />
-        <TextBox Margin="60,5,60,0" TextWrapping="Wrap" />
-        <Button Margin="100,50,100,0" Content="Valider" />
+        <TextBox x:Name="txtNomActivite" Margin="60,5,60,0" TextWrapping="Wrap" />
+        <Button Margin="100,50,100,0" Content="Valider" Click="Button_Click" />
 
 
     </StackPanel>

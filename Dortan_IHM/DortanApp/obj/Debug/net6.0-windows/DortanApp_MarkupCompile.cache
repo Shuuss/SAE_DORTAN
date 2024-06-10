@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-P:\SAE 2.01 Conception et développement\SAE_DORTAN\Dortan_IHM\DortanApp\obj\Debug\net6.0-windows\
+C:\Users\melih\Desktop\Travaux à faire\SAE 2.01 - REALISATION\Dortan_IHM\DortanApp\obj\Debug\net6.0-windows\
 DortanApp
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-P:\SAE 2.01 Conception et développement\SAE_DORTAN\Dortan_IHM\DortanApp\App.xaml
-10-956451435
+C:\Users\melih\Desktop\Travaux à faire\SAE 2.01 - REALISATION\Dortan_IHM\DortanApp\App.xaml
+7-2130920743
 
-25-807251019
-197-1950232174
-fenetres\Connexion.xaml;fenetres\Creation.xaml;fenetres\DetailsMateriel.xaml;fenetres\MainWindow.xaml;fenetres\Materiel.xaml;fenetres\Reservation.xaml;fenetres\UCCreation.xaml;fenetres\UCMateriel.xaml;fenetres\UCReservation.xaml;fenetres\UCVisuReserver.xaml;
+22-533464924
+197-779424775
+fenetres\Connexion.xaml;fenetres\DetailsMateriel.xaml;fenetres\MainWindow.xaml;fenetres\UCCreation.xaml;fenetres\UCMateriel.xaml;fenetres\UCReservation.xaml;fenetres\UCVisuReserver.xaml;
 
 False
 

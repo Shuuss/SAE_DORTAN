@@ -24,5 +24,20 @@ namespace DortanApp
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            string nomActivite = txtNomActivite.Text;
+
+            if (nomActivite.Length >= 10)
+            {
+                MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+                mainWindow.CreationActivite(nomActivite);
+
+                txtNomActivite.Text = "";
+            }
+            else if (nomActivite.Length < 10)
+                MessageBox.Show("Ajouter plus de détails au nom de l'activté");
+        }
     }
 }

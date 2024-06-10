@@ -15,6 +15,11 @@
             this.Nom = nom;
         }
 
+        public Activite(string nom)
+        {
+            this.Nom = nom;
+        }
+
         public int Id
         {
             get
@@ -39,6 +44,11 @@
             {
                 this.nom = value;
             }
+        }
+
+        public override string? ToString()
+        {
+            return Nom;
         }
     }
 }

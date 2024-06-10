@@ -34,12 +34,11 @@ namespace DortanApp.config
 
         public void ConnexionBD(string id, string mdp)
         {
-            strConnexion = $"Server=srv-peda-new;" +
-               $"Port=5433;" +
-               $"Database=dortan;" +
-               $"Search Path=dortan;" +
-               $"User Id={id};" +
-               $"Password={mdp};";
+            string strConnexion = $"Host=localhost;" +
+                                  $"Port=5432;" +
+                                  $"Database=dortan;" +
+                                  $"Username={id};" +
+                                  $"Password={mdp};";
 
             try
             {
@@ -47,9 +46,9 @@ namespace DortanApp.config
                 Connexion.ConnectionString = strConnexion;
                 Connexion.Open();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show("ERROR : Impossinble de se connecter" + ex, "PAS NORMAL", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("ERROR : Impossinble de se connecter", "PAS NORMAL", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -83,6 +82,7 @@ namespace DortanApp.config
 
         public int SetData(string setSQL)
         {
+
             try
             {
                 NpgsqlCommand sqlCommand = new NpgsqlCommand(setSQL, Connexion);

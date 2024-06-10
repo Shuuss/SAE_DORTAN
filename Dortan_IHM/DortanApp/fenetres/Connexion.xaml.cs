@@ -56,10 +56,6 @@ namespace Dortan
                 MessageBox.Show("Connexion réussie à la base de données!");
                 DialogResult = true;
             }
-            else
-            {
-                MessageBox.Show("Impossible de se connecter à la base de données.");
-            }
 
         }
 
@@ -69,7 +65,6 @@ namespace Dortan
             {
                 Application.Current.Shutdown();
             }
-
         }
     }
 }

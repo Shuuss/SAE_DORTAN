@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows;
 
 namespace DortanApp
 {
@@ -8,16 +9,21 @@ namespace DortanApp
         private Activite activite;
         private DateTime dateReservation;
         private int dureeReservation;
+        private List<Materiel> lesMateriels;
+
+        public Reservation()
+        {
+        }
 
         public Reservation(Activite activite, DateTime dateReservation, int dureeReservation)
         {
             this.Activite = activite;
             this.DateReservation = dateReservation;
             this.DureeReservation = dureeReservation;
+            this.LesMateriels = new List<Materiel>();
         }
 
-        public Reservation(int id, Activite activite, DateTime dateReservation, int dureeReservation)
-            : this(activite, dateReservation, dureeReservation)
+        public Reservation(int id, Activite activite, DateTime dateReservation, int dureeReservation) : this(activite, dateReservation, dureeReservation)
         {
             this.Id = id;
         }
@@ -78,6 +84,28 @@ namespace DortanApp
                     throw new ArgumentException("la durée ne doit pas être nulle ou négative");
                 }
                 dureeReservation = value;
+            }
+        }
+
+        public List<Materiel> LesMateriels
+        {
+            get
+            {
+                return this.lesMateriels;
+            }
+
+            set
+            {
+                this.lesMateriels = value;
+            }
+        }
+
+        public void AjouterMateriel(Materiel materiel)
+        {
+            if (materiel != null)
+            {
+                LesMateriels.Add(materiel);
+                MessageBox.Show("Le materiel a été ajouté");
             }
         }
     }

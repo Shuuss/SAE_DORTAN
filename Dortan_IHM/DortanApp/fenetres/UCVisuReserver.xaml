@@ -1,15 +1,31 @@
-﻿<UserControl
-    x:Class="DortanApp.UCVisuReserver"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:DortanApp"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Width="800"
-    Height="450"
-    mc:Ignorable="d">
-
+﻿<UserControl x:Class="DortanApp.UCVisuReserver"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:DortanApp"
+             mc:Ignorable="d">
+    
     <Grid>
-        <DataGrid ItemsSource="{Binding LesReservations}" />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="3*" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0">
+            <Label Content="Les Réservations" HorizontalAlignment="Center" FontSize="36" Margin="0,10,0,10" />
+            <Label Content="Nom" Margin="55,10,0,0" />
+            <TextBox x:Name="txtNom" Margin="55,0,50,0" TextChanged="TxtNom_TextChanged" />
+            <Label Content="Date format(ddmmyyyy)" Margin="55,10,0,0" />
+            <TextBox x:Name="txtDate" Margin="55,0,50,0" TextChanged="TxtDate_TextChanged" />
+        </StackPanel>
+
+        <DataGrid x:Name="dgReservations" Grid.Column="1" AutoGenerateColumns="False" ItemsSource="{Binding LesReservations}" SelectionChanged="DgReservations_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Activite.Nom}" Header="Nom de l'activité" />
+                <DataGridTextColumn Binding="{Binding DateReservation, StringFormat='{}{0:d}'}" Header="Date de réservation" />
+                <DataGridTextColumn Binding="{Binding DureeReservation}" Header="Durée de réservation" />
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>

@@ -25,6 +25,6 @@
         <Button
             Margin="60,5,60,0"
             Click="Button_Click"
-            Content="Se connecter" />
+            Content="Se connecter" IsDefault="True" />
     </StackPanel>
 </Window>

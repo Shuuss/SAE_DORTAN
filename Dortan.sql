@@ -1,31 +1,30 @@
 /*==============================================================*/
-/* Nom de SGBD :  PostgreSQL 8                                  */
-/* Date de création :  13/05/2024 10:19:01                      */
+/* Nom de SGBD : PostgreSQL 8                                   */
+/* Date de création : 13/05/2024 10:19:01                       */
 /*==============================================================*/
 
+drop table if exists ACTIVITE cascade;
 
-drop table ACTIVITE;
+drop table if exists CARACTERISTIQUE cascade;
 
-drop table CARECTERISTIQUE;
+drop table if exists CATEGORIE cascade;
 
-drop table CATEGORIE;
+drop table if exists CONCERNE cascade;
 
-drop table CONCERNE;
+drop table if exists DETAIL_CARACTERISTIQUE cascade;
 
-drop table DETAIL_CARACTERISTIQUE;
+drop table if exists EMPLOYE cascade;
 
-drop table EMPLOYE;
+drop table if exists MATERIEL cascade;
 
-drop table MATERIEL;
+drop table if exists RESERVATION cascade;
 
-drop table RESERVATION;
+drop table if exists SITE cascade;
 
-drop table SITE;
-
-drop table TYPE_MATERIEL;
+drop table if exists TYPE_MATERIEL cascade;
 
 /*==============================================================*/
-/* Table : ACTIVITE                                             */
+/* Table : ACTIVITE                                              */
 /*==============================================================*/
 create table ACTIVITE (
    NUM_ACTIVITE         SERIAL               not null,
@@ -34,16 +33,16 @@ create table ACTIVITE (
 );
 
 /*==============================================================*/
-/* Table : CARECTERISTIQUE                                      */
+/* Table : CARACTERISTIQUE                                       */
 /*==============================================================*/
-create table CARECTERISTIQUE (
+create table CARACTERISTIQUE (
    NUM_CARACTERISTIQUE  INT4                 not null,
    NOM_CARACTERISTIQUE  VARCHAR(50)          null,
-   constraint PK_CARECTERISTIQUE primary key (NUM_CARACTERISTIQUE)
+   constraint PK_CARACTERISTIQUE primary key (NUM_CARACTERISTIQUE)
 );
 
 /*==============================================================*/
-/* Table : CATEGORIE                                            */
+/* Table : CATEGORIE                                             */
 /*==============================================================*/
 create table CATEGORIE (
    NOM_CATEGORIE        VARCHAR(30)          not null,
@@ -51,7 +50,7 @@ create table CATEGORIE (
 );
 
 /*==============================================================*/
-/* Table : CONCERNE                                             */
+/* Table : CONCERNE                                              */
 /*==============================================================*/
 create table CONCERNE (
    NUM_RESERVATION      INT4                 not null,
@@ -60,7 +59,7 @@ create table CONCERNE (
 );
 
 /*==============================================================*/
-/* Table : DETAIL_CARACTERISTIQUE                               */
+/* Table : DETAIL_CARACTERISTIQUE                                */
 /*==============================================================*/
 create table DETAIL_CARACTERISTIQUE (
    NUM_MATERIEL         INT4                 not null,
@@ -70,7 +69,7 @@ create table DETAIL_CARACTERISTIQUE (
 );
 
 /*==============================================================*/
-/* Table : EMPLOYE                                              */
+/* Table : EMPLOYE                                               */
 /*==============================================================*/
 create table EMPLOYE (
    NUM_EMPLOYE          SERIAL               not null,
@@ -81,17 +80,19 @@ create table EMPLOYE (
 );
 
 /*==============================================================*/
-/* Table : MATERIEL                                             */
+/* Table : MATERIEL                                              */
 /*==============================================================*/
 create table MATERIEL (
    NUM_MATERIEL         SERIAL               not null,
    NOM_CATEGORIE        VARCHAR(30)          not null,
    NUM_SITE             INT4                 not null,
+   NOM_SITE             VARCHAR(20)          null,
    NUM_TYPE             INT4                 not null,
+   NOM_TYPE             VARCHAR(40)          null,
    NOM_MATERIEL         VARCHAR(50)          not null,
    LIEN_PHOTO           VARCHAR(200)         not null,
    MARQUE               VARCHAR(50)          not null
-      constraint CKC_MARQUE_MATERIEL check (MARQUE in ('Peli','Euromast','Martinas','Menfire','Softshell','Haix','Europa Kimanche')),
+      constraint CKC_MARQUE_MATERIEL check (MARQUE in ('Peli','Euromast','Martinas','Menfire','Softshell','Haix','EuropaKimanche')),
    DESCRIPTION          VARCHAR(300)         not null,
    PUISSANCE_CV         DECIMAL(4,2)         not null,
    PUISSANCE_W          INT4                 null,
@@ -100,18 +101,19 @@ create table MATERIEL (
 );
 
 /*==============================================================*/
-/* Table : RESERVATION                                          */
+/* Table : RESERVATION                                           */
 /*==============================================================*/
 create table RESERVATION (
    NUM_RESERVATION      SERIAL               not null,
    NUM_ACTIVITE         INT4                 not null,
+   NOM_ACTIVITE         VARCHAR(100)         null,
    DATE_RESERVATION     DATE                 not null,
    DUREE_RESERVATION    INT4                 not null,
    constraint PK_RESERVATION primary key (NUM_RESERVATION)
 );
 
 /*==============================================================*/
-/* Table : SITE                                                 */
+/* Table : SITE                                                  */
 /*==============================================================*/
 create table SITE (
    NUM_SITE             INT4                 not null,
@@ -123,7 +125,7 @@ create table SITE (
 );
 
 /*==============================================================*/
-/* Table : TYPE_MATERIEL                                        */
+/* Table : TYPE_MATERIEL                                         */
 /*==============================================================*/
 create table TYPE_MATERIEL (
    NUM_TYPE             INT4                 not null,
@@ -132,37 +134,37 @@ create table TYPE_MATERIEL (
 );
 
 alter table CONCERNE
-   add constraint FK_CONCERNE_CONCERNE_RESERVAT foreign key (NUM_RESERVATION)
+   add constraint FK_CONCERNE_CONCERNE_RESERVATION foreign key (NUM_RESERVATION)
       references RESERVATION (NUM_RESERVATION)
       on delete restrict on update restrict;
 
 alter table CONCERNE
-   add constraint FK_CONCERNE_CONCERNE2_MATERIEL foreign key (NUM_MATERIEL)
+   add constraint FK_CONCERNE_CONCERNE_MATERIEL foreign key (NUM_MATERIEL)
       references MATERIEL (NUM_MATERIEL)
       on delete restrict on update restrict;
 
 alter table DETAIL_CARACTERISTIQUE
-   add constraint FK_DETAIL_C_DETAIL_CA_MATERIEL foreign key (NUM_MATERIEL)
+   add constraint FK_DETAIL_CARACTERISTIQUE_MATERIEL foreign key (NUM_MATERIEL)
       references MATERIEL (NUM_MATERIEL)
       on delete restrict on update restrict;
 
 alter table DETAIL_CARACTERISTIQUE
-   add constraint FK_DETAIL_C_DETAIL_CA_CARECTER foreign key (NUM_CARACTERISTIQUE)
-      references CARECTERISTIQUE (NUM_CARACTERISTIQUE)
+   add constraint FK_DETAIL_CARACTERISTIQUE_CARACTERISTIQUE foreign key (NUM_CARACTERISTIQUE)
+      references CARACTERISTIQUE (NUM_CARACTERISTIQUE)
       on delete restrict on update restrict;
 
 alter table EMPLOYE
-   add constraint FK_EMPLOYE_APPARTIEN_SITE foreign key (NUM_SITE)
+   add constraint FK_EMPLOYE_APPARTIENT_SITE foreign key (NUM_SITE)
       references SITE (NUM_SITE)
       on delete restrict on update restrict;
 
 alter table MATERIEL
-   add constraint FK_MATERIEL_A_TYPE_MAT foreign key (NUM_TYPE)
+   add constraint FK_MATERIEL_A_TYPE_MATERIEL foreign key (NUM_TYPE)
       references TYPE_MATERIEL (NUM_TYPE)
       on delete restrict on update restrict;
 
 alter table MATERIEL
-   add constraint FK_MATERIEL_LIE_CATEGORI foreign key (NOM_CATEGORIE)
+   add constraint FK_MATERIEL_LIEE_CATEGORIE foreign key (NOM_CATEGORIE)
       references CATEGORIE (NOM_CATEGORIE)
       on delete restrict on update restrict;
 
@@ -172,7 +174,6 @@ alter table MATERIEL
       on delete restrict on update restrict;
 
 alter table RESERVATION
-   add constraint FK_RESERVAT_POUR_ACTIVITE foreign key (NUM_ACTIVITE)
+   add constraint FK_RESERVATION_POUR_ACTIVITE foreign key (NUM_ACTIVITE)
       references ACTIVITE (NUM_ACTIVITE)
       on delete restrict on update restrict;
-
